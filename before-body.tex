@@ -1,0 +1,63 @@
+
+$if(has-frontmatter)$
+  \frontmatter
+$endif$
+
+\renewcommand*{\maketitle}
+{
+  $if(title)$
+    \thispagestyle{empty}
+    \newgeometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, layout=a4paper, nomarginpar}
+    % uncomment to remove page number from titlepage
+    % \begin{titlepage}
+    {
+  
+      \vspace*{5cm}
+      \begin{center}
+      {
+        \sffamily\fontsize{20}{0}\selectfont Introduktion till elektronik \par
+        \vspace{7mm}
+        \sffamily\fontsize{32}{0}\selectfont $title$ \par
+      }
+      $if(subtitle)$
+        \vspace{2cm}
+        {
+          \sffamily\fontsize{32}{0}\selectfont $subtitle$ \par
+        }
+      $endif$
+      \end{center}
+
+      \vspace{2cm}
+
+      % \vfill % fill out vertically to make last section stick to bottom
+      {
+        \sffamily\small
+        Labbansvariga: \par
+        $for(by-author)$
+        {
+          \hspace{10mm} $by-author.name.literal$ \par
+        }
+        $endfor$
+        Dokument renderades: \par
+          \hspace{10mm} $date$ \par
+      }
+
+
+      \vfill
+
+      \begin{flushright}
+      \noindent
+      \begin{tabular}{rll}
+        \sffamily\Large Laboranter: & \makebox[6cm]{\hrulefill} & \makebox[6cm]{\hrulefill}\\
+      \end{tabular} 
+      \vspace{2cm}
+
+        \sffamily\Large Godkänd: \makebox[4cm]{\hrulefill}
+
+      \end{flushright}
+    }
+    % \end{titlepage}
+    \restoregeometry
+  $endif$
+} % end \renewcommand
+
