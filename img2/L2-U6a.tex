@@ -1,0 +1,60 @@
+
+\begin{circuitikz}[scale=0.98]
+  \ctikzset{
+    logic ports=european,
+    tripoles/european not symbol=ieee circle,
+    logic ports/scale=1.5,
+    multipoles/flipflop/clock wedge size=0.25,
+  }
+  \tikzset{
+    flipflop myD/.style={
+      flipflop,
+      flipflop def={
+        t1=D,
+        c3=1,
+        t6=Q,
+        t4=\inv{Q},
+        n3=1, nu=1, nd=1},
+    }
+  }
+  \draw 
+    ( 0,0) node[flipflop myD](D1) {}
+    ( 4,0) node[flipflop myD](D2) {}
+    ( 8,0) node[flipflop myD](D3) {}
+    (12,0) node[flipflop myD](D4) {}
+  ;
+  \draw
+    (D1.up)     to[short] ++ (0,+0.25) node[above]{SET}
+    (D2.up)     to[short] ++ (0,+0.25) node[above]{SET}
+    (D3.up)     to[short] ++ (0,+0.25) node[above]{SET}
+    (D4.up)     to[short] ++ (0,+0.25) node[above]{SET}
+
+    (D1.down)   to[short] ++ (0,-0.25) node[below]{CLR}
+    (D2.down)   to[short] ++ (0,-0.25) node[below]{CLR}
+    (D3.down)   to[short] ++ (0,-0.25) node[below]{CLR}
+    (D4.down)   to[short] ++ (0,-0.25) node[below]{CLR}
+  ;
+  \draw % D_in marker
+    (D1.bpin 1) -- ++(-1.0,0) node[left] {\ix{D}{in}}
+  ;
+  \draw % Q outputs
+    (D1.bpin 6) -- (D2.bpin 1) coordinate[midway] (D12)
+    (D2.bpin 6) -- (D3.bpin 1) coordinate[midway] (D23)
+    (D3.bpin 6) -- (D4.bpin 1) coordinate[midway] (D34)
+    (D4.bpin 6) -- ++ (2.0,0) coordinate[midway] (D45)
+    (D12) to[short,*-] ++(0,1.5) node[above]{\ix{Q}{A}}
+    (D23) to[short,*-] ++(0,1.5) node[above]{\ix{Q}{B}}
+    (D34) to[short,*-] ++(0,1.5) node[above]{\ix{Q}{C}}
+    (D45) to[short,*-] ++(0,1.5) node[above]{\ix{Q}{D}}
+  ;
+  \draw % All the CP stuff
+    (D1.pin 3) to[short,-*] ++(-0.5,0) coordinate[] (CPsplit)
+    (D2.pin 3) -- ++(-0.5,0) to[short,-*] ++(0,-2.0) coordinate(CP2)
+    (D3.pin 3) -- ++(-0.5,0) to[short,-*] ++(0,-2.0) coordinate(CP3)
+    (D4.pin 3) -- ++(-0.5,0) to[short,-*] ++(0,-2.0) coordinate(CP4)
+
+    (CPsplit) -- ++(-0.5,0) node[left] {$\textnormal{CP}$}
+    (CPsplit) |- (CP2) -- (CP3) -- (CP4)
+  ;
+\end{circuitikz}
+

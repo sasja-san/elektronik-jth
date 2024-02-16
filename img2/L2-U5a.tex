@@ -1,0 +1,61 @@
+
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=european,
+    tripoles/european not symbol=ieee circle,
+    logic ports/scale=1.5,
+    multipoles/flipflop/clock wedge size=0.25,
+  }
+  \tikzset{flipflop myJK/.style={flipflop,
+  flipflop def={c2=1, n2=1, nu=1, nd=1}}}
+  \draw 
+    (0,0) node[flipflop myJK](JK1) {}
+    (5,0) node[flipflop myJK](JK2) {}
+    (10,0) node[flipflop myJK](JK3) {}
+
+    (JK1.bpin 1) to[] (JK1.pin 1) node[above]{J}
+    (JK2.bpin 1) to[] (JK2.pin 1) node[above]{J}
+    (JK3.bpin 1) to[] (JK3.pin 1) node[above]{J}
+
+    (JK1.bpin 3) to[] (JK1.pin 3) node[below]{K}
+    (JK2.bpin 3) to[] (JK2.pin 3) node[below]{K}
+    (JK3.bpin 3) to[] (JK3.pin 3) node[below]{K}
+
+    (JK1.bpin 4) to[] (JK1.pin 4) node[below]{\inv{Q}}
+    (JK2.bpin 4) to[] (JK2.pin 4) node[below]{\inv{Q}}
+    (JK3.bpin 4) to[] (JK3.pin 4) node[below]{\inv{Q}}
+
+    (JK1.bpin 6) to[] (JK1.pin 6) node[above]{     Q }
+    (JK2.bpin 6) to[] (JK2.pin 6) node[above]{     Q }
+    (JK3.bpin 6) to[] (JK3.pin 6) node[above]{     Q }
+
+    (JK1.up)     to[short] ++ (0,+0.25) node[above]{SET}
+    (JK2.up)     to[short] ++ (0,+0.25) node[above]{SET}
+    (JK3.up)     to[short] ++ (0,+0.25) node[above]{SET}
+
+    (JK1.down)   to[short] ++ (0,-0.25) node[below]{CLR}
+    (JK2.down)   to[short] ++ (0,-0.25) node[below]{CLR}
+    (JK3.down)   to[short] ++ (0,-0.25) node[below]{CLR}
+
+    (JK1.pin 2) to[short] ++ (-0.25,0) node[left]{CP}
+    (JK2.pin 2) node[below left]{CP}
+    (JK3.pin 2) node[below left]{CP}
+    ;
+  \draw
+    % Connecting JK1 to JK2, stopping at X0 on the way
+    (JK1.bpin 6) to[] (JK1.pin 6) to[short,-*] ++(1.5,0) coordinate[](Q1){} 
+    (JK2.bpin 6) to[] (JK2.pin 6) to[short,-*] ++(1.5,0) coordinate[](Q2){} 
+    (JK3.bpin 6) to[] (JK3.pin 6) to[short,-*] ++(1.5,0) coordinate[](Q3){} 
+
+    (Q1) to[short] ++ (0,1) node[above]{$\textnormal{X}_0$}
+    (Q2) to[short] ++ (0,1) node[above]{$\textnormal{X}_1$}
+    (Q3) to[short] ++ (0,1) node[above]{$\textnormal{X}_2$}
+    (Q1) |- (JK2.pin 2)
+    (Q2) |- (JK3.pin 2)
+    (Q3) -- ++(0.5,0)
+    % (Q1) to[short] ++(1,0) to[] ++(0,-1) to[] ++(1,0) node[flipflop myJK, anchor=pin 2](JK2) {}
+  ;
+  \draw
+  ;
+\end{circuitikz}
+

@@ -1,0 +1,360 @@
+---
+title: "Laboration 3"
+subtitle: "Digitalteknik - Skiftregister, räknare och multiplexer"
+---
+
+\maketitle
+
+## Syfte
+
+I denna lab ska du lära dig hantera skiftregistret som är en mycket användbar komponent.
+Den används bl. a för att bygga en multiplikator, men också för att seriellt skicka in en signal via en pinne i stället för att använda t.ex. 8 pinnar för att få in ett 8-bits tal till en mikrodator.
+
+
+::::{.column-margin}
+::: {.callout-tip title="**Tips som gör labben enklare**"}
+  * Var mycket noggrann med att koppla rätt från början.
+    
+  * Använd korta sladdar.
+  * Försök välja en och samma färg när många parallella ledningar ska gå från en komponent till en annan.
+  * Försök placera komponenterna så att de parallella ledningarna i möjligaste mån verkligen får gå parallellt och någorlunda rakt.
+:::
+::::
+
+Dessutom ska du koppla in en räknare till en sjusegmentsdisplay för att prova på hur binära tal kan kan visas decimalt på en sjusegmentdisplay.
+
+Du ska också prova multiplexern, som dels kan användas som kanalväljare, dels för att koppla upp en specifik sanningstabell med bara en komponent i stället för att använda flera lösa grindar i ett kombinatoriskt nät. 
+
+## Utrustning:
+
+Komponenter du behöver låna under laborationen:
+
+  * 1 st Multiplexer 74xx151
+  * 1 st Räknare 74xx191
+  * 1 st Skiftregister 74xx194
+  * 1 st Skiftregister 74xx595 (frivillig uppgift)
+  * 1 st BCD-avkodare 74xx4511
+  * 1 st 7-segmentsdisplay LS0565
+
+Övriga komponenter ska finnas i din låda (bl.a. labb-däck, spänningsmatning, dioder, resistorer, kopplingstrådar, multimeter)
+
+## Redovisning: 
+
+Visa fungerande kopplingar för läraren.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 1 -- Skiftregistret
+
+Skiftregistret 74xx194 kan kopplas på lite olika sätt.
+Dels kan man ta in data parallellt, dels kan man skifta registrets innehåll åt antingen höger eller vänster.
+Den siffra som skiftas ut, kan antingen ”tappas bort” eller tas om hand för att skifta in i registret igen, så att samma serie siffror skiftas genom registret om och om igen.
+\ix{S}{0} och \ix{S}{1} styr registrets funktion.
+\ix{Q}{0}-\ix{Q}{3} är parallellt ut, \ix{D}{0}-\ix{D}{3} är parallellt in, \ix{D}{SR} är signal för högerskift in och \ix{D}{SL} för vänsterskift in.
+
+Fundera först på vilken sekvens du skulle få om skiftregistret kopplas enligt figuren nedan, för olika kombinationer av \ix{S}{0} och \ix{S}{1}.
+
+
+  * \ix{S}{0} = 0, \ix{S}{1} = 1: \ansline{5cm}
+
+  * \ix{S}{0} = 1, \ix{S}{1} = 0: \ansline{5cm}
+
+
+
+:::{.column-margin}
+  \vspace{10mm}
+  \begin{TAB}(r,8mm,8mm)[7pt]{|c|c|l|}{|c|c|c|c|c|}
+  \ix{S}{0} & \ix{S}{1} & Funktion vid klockpuls  \\
+  0         & 0         & Registret är låst       \\
+  0         & 1         & Vänsterskift            \\
+  1         & 0         & Högerskift              \\
+  1         & 1         & Parallell inläsning     \\
+  \end{TAB}
+:::
+
+\begin{flushright}
+{{< include img3/L3-U1a.tex >}}
+\end{flushright}
+
+::::{.column-margin}
+
+::: {.callout-warning title="**OBS!**"}
+
+Glöm inte motstånd till dioderna -- de måste strömbegränsas!
+
+Alla dioder ska kopplas med varsitt motstånd.
+
+|
+| 500$\Omega$ < R < 2000$\Omega$
+
+:::
+::::
+
+Koppla nu upp kretsen.
+\ix{D}{0} -- \ix{D}{3} ansluts till +5V (1) eller jord (0) enligt figuren.
+Använd datablad för att ta reda på hur övriga ingångar ska anslutas.
+Kom ihåg att alla ingångar normalt behöver anslutas för att kretsen ska fungera.
+Anslut \ix{Q}{0} -- \ix{Q}{3} till lysdioder.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+Rita tidsdiagram för \ix{Q}{0} -- \ix{Q}{3}:
+
+
+\begin{center}
+{{< include img3/L3-U1b.tex >}}
+\end{center}
+
+Prova sedan att sätta både \ix{S}{1} och \ix{S}{0} till hög nivå igen, och nollställ därefter \ix{S}{1} i stället för \ix{S}{0}.
+Hur blir nu diagrammet?
+
+\begin{center}
+{{< include img3/L3-U1c.tex >}}
+\end{center}
+
+|
+| Beskriv nu med egna ord hur skiftregistret fungerar.
+| 
+\notes[16pt]{4}{\textwidth}
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 2 -- Fyrabitars räknare 74xx191
+
+Koppla upp räknaren 74xx191.
+Se till att du också får plats med kretsarna i nästa uppgift, BCD-avkodaren och 7-segmentsdisplayen.
+Använd datablad för att ta reda på hur alla ingångar ska anslutas.
+Koppla utgångarna \ix{Q}{0} --\ix{Q}{3} till lysdioderna.
+Kontrollera att räknaren fungerar som förväntat.
+Behåll kopplingen och fortsätt med nästa uppgift!
+
+Plats för skiss av kapselns anslutningar:
+
+\vfill
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 3 -- 7-segmentdisplay LS0565 och BCD-avkodare 74xx4511
+
+Studera 7-segmentdisplay LS0565.
+Titta i databladet hur den ska kopplas.
+
+Vilken pinne är kopplad till alla 7 segmenten? Ska den pinnen kopplas till 5V eller jord (0V) för att lysdioderna ska lysa?[\ansline{\marginparwidth}]{.aside}
+
+
+::::{.column-margin}
+:::{.callout-warning title="**OBS!**" icon=true}
+Du bör titta i databladet för både displayen och avkodaren för att veta vilken pinne som är a, b c, etc. De sitter [**INTE**]{.underline} i ordning.
+
+| 
+| *...eller (roligare, mer lärorikt)...*
+| 
+| Rita gärna din egen pinout för sjusegmentdisplayen efter att ha testat den. Det gör kopplandet mycket lättare. Att testa gör du genom att koppla:
+| 5V--220$\Omega$--[ett ben]--[ett annat ben]--jord
+
+:::
+::::
+
+
+För att få 7-segmentdisplayen att visa siffror behöver man ha en avkodare som ger signal till rätt lysdioder.
+I databladet kan du se vilken diod som kallas a, b, c etc..
+För siffran 1 behöver t.ex. lysdiod b och c lysa, och alla andra vara släckta, för siffran 2 ska a,b,d,e och g lysa och övriga vara släckta.
+Att bygga den/de kretsar som ska tända lysdioderna kräver rätt mycket arbete, men därför finns en krets som gör denna omvandling, en s.k. avkodare.
+
+En som passar bra till vår typ av display är 74xx4511.
+Koppla upp kretsen 74xx4511 ihop med en 7-segmentsdisplay enligt figuren nedan och testa hur du får fram siffrorna 0-9. 
+
+Glöm inte motstånden!
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{center}
+{{< include img3/L3-U3a.tex >}}
+\end{center}
+
+
+\vspace*{10mm}
+
+
+:::{.column-margin}
+
+\notes[16pt]{6}{\marginparwidth}
+
+:::
+  1. Vad gör kretsen 74xx4511?
+
+  2. Hur ska du koppla pinne 5 på 74xx4511? 
+
+  3. Vad händer om du skickar in binära insignaler som överstiger 9 decimalt?
+
+
+\vfill
+
+Koppla nu ihop kretsen med räknaren i förra uppgiften.
+Anslut räknarens utgångar \ix{Q}{0} -- \ix{Q}{0} till avkodarens ingångar \ix{D}{0} -- \ix{D}{3} (A B C D i figuren).
+Det blir en räknare som räknar upp från 0 till 15 men som visar siffrorna 0-9.
+
+Du måste också koppla in klockan till 74xx4511.
+Hur ska den kopplas in? (Från klockans Q eller \inv{Q} -- läs i databladet och fundera)
+
+\vspace{10mm}
+\notes{6}{\textwidth}
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 4 -- Multiplexern 74xx151
+
+:::{.column-margin}
+{{< include img3/L3-U4.tex >}}
+:::
+
+En multiplexer kan ses som en kanalväljare.
+
+Om signalen på ABC är 001 kommer den 1:a som är inkopplad på kanal 1 att skickas igenom
+till X.
+Om man i stället låter ABC vara 110 kommer det som finns på kanal 6 att skickas igenom, dvs 0.
+En multiplexer kan därför användas för att bygga funktionen i en sanningstabell med bara en komponent i stället för med lösa grindar.
+
+Koppla upp multiplexern 74xx151 enligt figuren ovan.
+Du behöver som vanligt databladet för att veta hur du ska koppla.
+Du behöver bara en lysdiod.
+
+Rita upp sanningstabellen:
+
+\begin{center}
+  \begin{TAB}(r,8mm,8mm)[7pt]{|c|c|c|c|}{|c|c|c|c|c|c|c|c|c|}
+    A & B & C & X \\
+      &   &   &   \\
+      &   &   &   \\
+      &   &   &   \\
+      &   &   &   \\
+      &   &   &   \\
+      &   &   &   \\
+      &   &   &   \\
+      &   &   &   \\
+  \end{TAB}
+\end{center}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 5 -- Skiftregistret 74xx595
+
+::: {.callout-note title="**Notera**"}
+
+> Denna uppgift är frivillig!
+
+:::
+
+74xx595 är ett skiftregister som bara kan ta in signalen seriellt.
+Ta fram databladet till komponenten och följ instruktionerna nedan.
+
+
+Du ska ta in signalen seriellt, d.v.s. koppla in en sladd till pinne 14, som du sen sätter i 0 eller 1 beroende på vilket du vill få in (funkar alltså som \ix{D}{SL} i 74xx194 -- men du kommer nu manuellt ställa in vad den ska vara genom att flytta en kabel mellan noll och ett.
+
+Koppla in signalerna \ix{Q}{A} -- \ix{Q}{H} till dina dioder.
+Du behöver nu 8 dioder!
+
+Koppla in signalen \inv{G} (eller \inv{OE}) till jord (Gate eller Output Enable, d.v.s. om denna är 0 släpps signalen ut, (noll eller ett) medan om denna är 1 kommer Q att vara
+hög-ohmig.^[Detta kallas tri-state och det kommer vi att komma tillbaka till senare i kursen.]
+
+SRCLR, pinne 10 måste vara kopplad till 5V (annars clearar den).
+
+Pinne 12 ska du koppla till din klocka.
+Enligt databladet ska sen pinne 11 kopplas till inversen av klockan.
+Eftersom du har tillgång både till Q och Q-invers på din klocka kopplar du lämpligen in dem till varsin av dessa pinnar (11 och 12).
+
+Nu ska du prova din krets. Börja med att se till att RCLK är noll.
+Låt SER (sladden i pinne 14) vara 5V. Klocka fram 3-4 ggr på din klocka.
+Stanna i läget där RCLK är i läge 0. 
+Ändra SER till 0V.
+Klocka några gånger till.
+
+Vad händer?
+Förklara hur lysdioderna påverkas av det du släpper in på SER. 
+Till din hjälp har du ett tidsdiagram i databladet.
+
+Hur funkar ditt skiftregister?
+Vad kan du använda det till?
+
+\vspace{10mm}
+
+\notes{6}{\textwidth}
+

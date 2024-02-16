@@ -1,0 +1,19 @@
+\begin{circuitikz}[scale=1.2]
+  \ctikzset{
+    logic ports=european,
+    tripoles/european not symbol=ieee circle,
+    logic ports/scale=1.0,
+    multipoles/flipflop/clock wedge size=0.25,
+  }
+  \draw
+    (0,0) node[anchor=east]{} coordinate (J1)
+      to[R=47<\kilo\ohm>, *-*]  ++ (+3,0) coordinate (J2)
+      to[C=100<\nano\farad>]    ++ (0,-2) node[tlground]{}
+    (J1) to[R=10<\kilo\ohm>]    ++ (0,+2) node[above]{5V}
+    (J1) to[push button, l=BTN] ++ (0,-2) node[tlground]{}
+    (J2) -- ++ (1,0) node[ieeestd invschmitt port,anchor=in](TRIG){} 
+    (TRIG.out) node[right]{CLK}
+    ;
+\end{circuitikz}
+
+

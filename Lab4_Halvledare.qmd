@@ -1,0 +1,613 @@
+---
+title: "Laboration 4"
+subtitle: "Halvledare"
+---
+
+\maketitle
+
+
+## Syfte
+
+Denna laboration syftar till att ge laboranten möjlighet att, med experimentella metoder, bekanta sig med dioder och bipolära transistorer.
+Samtidigt kommer elläran och komponentmärkning att repeteras.
+Dessutom ska studenten lära sig att hitta relevanta uppgifter i datablad.
+
+
+## Genomförande
+
+::::{.column-margin}
+:::{.callout-warning title="**OBS!**"}
+I denna labb använder du spänningsaggregatet (spänningskub) i labbsalen.
+När denna används så får spänningsförsöjande kretsen från labb-lådan [EJ]{.underline} vara inkopplad!
+:::
+::::
+
+Samtliga laborationer i kursen utförs i grupper om två studenter, i undantagsfall en, men aldrig tre.
+Försök arbeta parallellt så att t ex en mäter och en skriver för att behålla lite tempo genom laborationen.
+Det kan vara bra att ha anteckningar och utdelad litteratur till hands.
+
+## Utrustning
+
+::::{.column-margin}
+![](img4/potentiometer_b10k.jpg)
+Istället för en potentiometer på 4.7k$\Omega$ så kan den potentiometer som kom med ditt labb-kit användas. Den du fick är på 10k$\Omega$ och ser ut som den på bilden.
+::::
+
+Komponenter att använda under denna laboration:
+
+  * Resistanser (Vissa finns i din låda, vissa finns i labsalen):
+  * 220 $\Omega$, 270 $\Omega$, 470 $\Omega$, 820 $\Omega$, 1 k$\Omega$, 10 k$\Omega$, 100 k$\Omega$, samt ytterligare efter behov/tillgång i salen.
+  * 1 st Likriktardiod 1N4004
+  * 1 st Schottkydiod BAT42
+  * 1 st Zenerdiod 5,1 V
+  * 2-3 st transistor BC547B
+  * Potentiometer 4,7 k$\Omega$
+
+Övriga komponenter ska finnas i din låda (bla labb-däck, lysdioder, resistorer, skjutströmställare, kopplingstrådar, multimeter.)
+
+
+## Redovisning
+Redovisning sker genom uppvisande av resultat för laborationsansvarig (vid markerade avsnitt).
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 1 -- Lysdiod
+
+Plocka fram motstånd enligt tabellen nedan och kontrollera med hjälp av färgkoden att du hittade rätt motstånd i lådan.
+Genom att alltid läsa av färgkoden kommer du enklare att lära dig alla värden innan tentan, så fortsätt med detta även i kommande uppgifter.
+
+Koppla upp nedanstående koppling.
+Använd det vanliga spänningsaggregatet som spänningskälla.
+Använd den *varierbara utgången* och ställ in strömbegränsningen på ca 0.1 A.^[Strömbegränsning ställs när man kortslutit plus och minus-kontakterna på spänningsaggregatet.]
+
+:::{.column-margin}
+![](img4/image1.png){width=70mm}
+:::
+
+Mät, med olika motståndsvärden enligt tabellen, spänningen över R2 samt spänningen över lysdioden.
+Beräkna sedan strömmen genom dioden (som är samma som strömmen genom R2).
+
+
+\begin{flushright}
+  \begin{TAB}(c,20mm,12mm)[7pt]{|r|c|c|c|}{|c|c|c|c|}
+    Motstånd     & \ix{U}{R2} & \ix{I}{D2} & \ix{U}{D2} \\
+    820$\Omega$  &            &            &            \\
+    470$\Omega$  &            &            &            \\
+    220$\Omega$  &            &            &            \\
+  \end{TAB}
+\end{flushright}
+
+
+Tabellen bör visa att lysdioden är en olinjär komponent, d.v.s. spänningen är inte proportionell mot strömmen.
+
+  1. Oavsett ström som går så är spänningen över lysdioden c:a [\ansline{4cm}]{.aside}
+
+
+Beräkna vilket motstånd du behöver för att få 10 mA genom dioden.
+Redovisa din beräkning nedan.
+
+\vfill
+
+
+Koppla in beräknat motstånd (det närmaste du hittar) och verifiera beräkningen.
+Sänk tillfälligt spänningen från aggregatet.
+
+  2. Vid vilken spänning slutar dioden helt att lysa?[\ansline{4cm}]{.aside}
+
+  3. Vilken ström går det då genom dioden?[\ansline{4cm}]{.aside}
+
+::::{.column-margin}
+:::{.callout-warning title="**OBS!**"}
+Lysdioder får inte utsättas för mer än 5 V i backriktningen.
+:::
+::::
+
+Justera spänningen till 5 V och vänd på lysdioden, så att katoden kopplas mot plus.
+
+  4. Vad händer?
+
+\vspace{5mm}
+\notes{1}{\textwidth}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 2 -- Likriktardiod
+
+Modifiera föregående koppling så att likriktardioden 1N4004 ersätter lysdioden. Fyll i tabellen.
+
+\begin{flushright}
+  \begin{TAB}(c,20mm,12mm)[7pt]{|r|c|c|c|}{|c|c|c|c|}
+    Motstånd     & \ix{U}{R2} & \ix{I}{D2} & \ix{U}{D2} \\
+    820$\Omega$  &            &            &            \\
+    470$\Omega$  &            &            &            \\
+    220$\Omega$  &            &            &            \\
+  \end{TAB}
+\end{flushright}
+
+Det bör framgå av tabellen att likriktardioden på många sätt liknar en lysdiod, men framspänningsfallet räcker inte för att likriktardioden ska leda.
+Sänk tillfälligt spänningen från aggregatet.
+
+  1. Vid vilken spänning slutar dioden i princip att leda ström? (Vilket du ser på att spänningen över motståndet närmar sig 0.)[\ansline{4cm}]{.aside}
+
+Det framgår att dioden har en spärrspänning som måste övervinnas innan den leder ström i framriktningen.
+
+Studera databladet för 1N4004 som du hittar genom att googla på beteckningen 1N4004, eller titta i Canvas.
+Strömbegränsa nätaggregatet så att du får ut precis så mycket ström som dioden tål i genomsnitt (oftast kallad \ix{I}{(AV)} eller \ix{I}{F}).
+
+Justera spänningen till 5V och låt sedan aggregatet vara avstängt medan du kopplar eftersom dioden kommer att bli varm.
+Koppla förbi motståndet så att bara strömbegränsningen i aggregatet begränsar strömmen genom dioden.
+Slå på aggregatet och kontrollera att strömmen inte överstiger den inställda.
+
+Mät spänningen över dioden och läs av strömmen på aggregatet.
+Beräkna effekten.
+
+  2. Spänning över varm diod:[\ansline{4cm}]{.aside}
+
+  3. Ström genom varm diod:[\ansline{4cm}]{.aside}
+
+  4. Effektutveckling i dioden:[\ansline{4cm}]{.aside}
+
+{{< pagebreak >}}
+
+Dioden är nu ganska varm (kanske 80°C). Fortsätt mäta spänningen över dioden medan du kyler den, t ex genom att blåsa kraftigt på den eller kyla anslutningsbenet nära dioden med en polygrip. Temperaturen bör kunna gå ner 10–20°C. 
+
+  5. Spänning över lite kallare diod:[\ansline{4cm}]{.aside}
+
+  6. Hur påverkas diodens framspänningsfall av att dioden blir varm? (Jämför med den kallare.)[\notes[16pt]{2}{\marginparwidth}]{.aside}
+
+
+Av experimentet ovan kan vi dra en intressant och mycket viktig slutsats:
+
+Antag att vi vill klara fyra gånger så hög ström som en ensam diod tål genom att parallellkoppla fyra dioder.
+Antag vidare att en av dioderna släpper igenom lite mer ström (vid samma spänning) än övriga (dioder är inte identiska) och därför blir lite varmare.
+
+  7. Hur kommer strömmen i den varmaste dioden att påverkas?[\ansline{4cm}]{.aside}
+
+  8. Hur påverkar det temperaturen i denna?[\ansline{4cm}]{.aside}
+
+  9. Hur påverkar det i sin tur strömmen?[\ansline{4cm}]{.aside}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 3 -- Shottkydiod
+
+
+:::{.column-margin}
+![](img4/image2.png){width=70mm}
+:::
+
+
+Nu ska vi introducera en komponent som inte har förevisats på föreläsningen. Ställ åter in strömbegränsningen till 0,1 A och koppla upp nedanstående nät med shottkydioden BAT42.
+
+Lägg speciellt märke till shottkydiodens schemasymbol.
+
+Mät, med olika motståndsvärden enligt tabellen, spänningen över R2 samt spänningen över lysdioden.
+Beräkna sedan strömmen genom dioden (som är samma som strömmen genom R2).
+
+
+\begin{flushright}
+  \begin{TAB}(c,20mm,12mm)[7pt]{|r|c|c|c|}{|c|c|c|c|c|c|}
+    Motstånd     & \ix{U}{R2} & \ix{I}{D5} & \ix{U}{D5} \\
+    100k$\Omega$ &            &            &            \\
+    10k$\Omega$  &            &            &            \\
+    1k$\Omega$   &            &            &            \\
+    470$\Omega$  &            &            &            \\
+    220$\Omega$  &            &            &            \\
+  \end{TAB}
+\end{flushright}
+
+Rita upp ett diagram som visar hur spänningen över dioden beror av strömmen genom denna.
+[Enklast är att rita detta diagram på ett separat pappersark eller i Excel. Om du är bra på att rita smått så kan det rymmas på denna sida.]{.aside}
+Sätt spänningen på X-axeln och använd linjära skalor så vi får ett diagram som kan jämföras med de diodkurvor vi tidigare mätt fram på lektionerna.
+
+Leta upp framspänningsfallet vid någon jämförbar ström i databladet för dioden. Hur stämmer detta med mätningen?[\notes{2}{\marginparwidth}]{.aside}
+
+::: {.callout-note title="**Faktaruta, Shottkydiod**"}
+
+| Ibland behöver man lägre framspänningsfall än en vanlig kiseldiod ger. 
+|
+
+På föreläsningen har vi sett germaniumdioder som dock har många nackdelar, t.ex. stor resistans (dvs. spänningen ökar snabbt med strömmen).
+Ett modernare alternativ är schottkydioden som har en övergång direkt från metall till N-dopat kisel (istället för P-dopat till N-dopat).
+Ett liknande spärrskikt uppstår i övergången, men bara i kiseldelen (ej i metallen) så spänningen blir lägre.
+
+| 
+| Schottkydioden är snabb och bra på många sätt, men läckströmmen i backriktningen är högre, speciellt när dioden blir varm.
+
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 4 -- Zenerdiod
+
+:::{.column-margin}
+\vspace{228mm}
+Ok, så långt:
+
+---
+
+:::
+
+Ofta används 9V batterier för att mata handburen elektronik.
+Spänningen från batteriet kan dock variera från ca 7 – 10 V beroende på typ och laddningsgrad.
+Vid mycket små strömuttag kan nedanstående koppling användas för att ge en stabil spänning.
+
+\ix{U}{ut} kan t.ex. användas i senare kopplingar för att spänningsmata en logikkrets, så koppla gärna upp den snyggt i något hörn så du kan behålla den på däcket. 
+Istället för batteri använder vi nu ett nätaggregat, som strömbegränsas till 100mA före inkoppling.
+Ta inte i komponenterna i drift då de kan bli lite varma.
+Lastresistansen \ix{R}{L} ska *inte* anslutas än.
+
+
+::::{.column-margin}
+:::{.callout-warning title="**OBS!**"}
+Lägg märke till riktningen på dioden.
+Montering på detta sätt är hur man vanligen använder en zenerdiod.
+Lägg gärna dess symbol på minnet.
+:::
+::::
+
+![](img4/image3.png){width=97mm}
+
+Fyll i nedanstående tabell för att få ett samband mellan batterispänning och \ix{U}{ut}.
+
+:::{.column-page}
+\begin{center}
+  \begin{TAB}(b,13mm,11mm)[7pt]{|r|c|c|c|c|c|c|c|c|c|c|}{|c|c|}
+    \ix{U}{batt} & 3.0V & 4.0V & 4.5V & 5.0V & 5.5V & 6.0V & 7.0V & 8.0V & 9.0V & 10.0V \\
+    \ix{U}{ut}   &      &      &      &      &      &      &      &      &      &       \\
+  \end{TAB}
+\end{center}
+:::
+
+:::{.column-margin} 
+| **Förslag på metod:**
+| Anslut olika motstånd som \ix{R}{L}. Börja t.ex. med 2,2 k$\Omega$ och halvera tills du ser en lite större spänningsförändring. Finjustera motståndet tills spänningen hamnar strax över 4,5 V. Beräkna sedan strömmen genom motståndet (= Max last).
+:::
+
+Antag att en normal batterispänning med lite last är 8,5 V.
+Hur mycket ström kan vi då ta ut ur kretsen (vid \ix{U}{ut}) utan att spänningen understiger 4.5 V?
+
+|
+| 
+| Max last: \ansline{3cm} mA
+|
+
+Försök sedan efter labben förklara det du såg med beräkningar, men gör först efterföljande
+uppgifter.
+
+Tänk på att logikkretsar med TTL-teknik (t ex LS-serien) kräver 4,75 V, men t.ex. HC-kretsar klarar en betydligt lägre matningsspänning, så vid små strömuttag kan du använda ovanstående koppling för att göra logiklaborationer hemma med bara ett batteri som spänningskälla.
+
+Vill du ta ut högre ström (upp till ???mA) kan du använda den spänningsregleringskrets som finns i ditt labb-kit.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 5 - Transistor som strömförstärkare
+
+:::{.column-margin}
+I denna och nästa uppgift kan du antingen använda NPN-transistorn BC547B (även BC546B samt BC548B som går lika bra -- dock ej BC557B vilket är en PNP-transistor).
+
+Leta upp pinkonfigurationen för kapsel TO-92 (=SOT54) i databladet och skriv ned vilken som är kollektor, bas respektive emitter.
+
+![](img4/image4.png){width=70mm}
+:::
+
+I efterföljande kopplingar är det av yttersta vikt att du använder röda sladdar till positiv matning och svarta kablar till jord.
+Koppla också positiv matning till den ena skenan i däcket och jord till skenan på den andra sidan av kopplingen, så att det blir lätt att se likheten med schemat.
+
+:::{.callout-warning title="**OBS! Ett vanligt misstag:**"}
+Detta är en alldeles *utmärkt* uppgift att sitta fast på i 60-90 minuter. Då som en konsekvens av röriga kopplingar och dålig användning av färgad sladd.
+:::
+
+Koppla upp intilliggande koppling. P1 och P2 lämnas som oanslutna kabeländar.
+
+
+Håll en kabelända i var hand.
+Studera lysdioden.
+
+Kittlar det i handen?
+
+Mät spänningen över 10 k$\Omega$-motståndet för att beräkna strömmen genom kroppen (= \ix{I}{b}).
+Mät även spänningen över 270$\Omega$-motståndet för att kunna beräkna strömmen genom dioden (= \ix{I}{c}).
+Mät helst båda samtidigt eller i tät följd.
+
+Beräkna sedan transistorns strömförstärkning.
+Redovisa beräkningen.
+
+
+|
+|
+| \ix{U}{R4} = \ansline{25mm} \hspace{10mm} \ix{I}{R4} = \ix{I}{b} = \ansline{25mm}
+| 
+| \ix{U}{R3} = \ansline{25mm} \hspace{10mm} \ix{I}{R3} = \ix{I}{c} = \ansline{25mm}
+| 
+| 
+| \ix{h}{FE} = \ansline{25mm}
+|
+
+Leta reda på en multimeter med transistormätning.
+Sätt samma transistor i multimetern och läs av.
+
+| 
+|
+| \ix{h}{FE}: \ansline{25mm}
+| 
+
+
+::::{.column-margin}
+
+:::{.callout-tip title="**Tips**"}
+Skriv helst alla strömmar med samma enhet, t.ex. µA.
+Då blir det mycket enklare att rimlighetsbedöma den beräknade strömförstärkningen.
+:::
+::::
+
+Titta i databladet. Vilket \ix{h}{FE} anges där?
+
+| 
+|
+| \ix{h}{FE}: \ansline{25mm}
+| 
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 6 -- Darlington
+
+
+:::{.column-margin}
+\vspace{228mm}
+Ok, så långt:
+
+---
+
+:::
+
+:::{.column-margin}
+\vspace{6cm}
+![](img4/image6.png){width=70mm}
+:::
+
+::: {.callout-note title="**Faktaruta, Darlington**"}
+
+![](img4/image5.png){width=90mm}
+
+Ibland behöver man större strömförstärkning än vad en transistor kan ge. 
+Detta gäller särskilt vid användning av effekttransistorer som kan har en förstärkning ned mot 15 ggr.
+Det är då möjligt att kaskadkoppla två transistorer enligt figuren ovan.
+
+Sammanlagda strömförstärkningen blir då produkten av de båda transistorernas förstärkning.
+
+Det finns en speciell grupp av transistorer, darlingtontransistorer, som innehåller en färdig sådan koppling i samma kapsel, se Q5.
+
+|
+| *Exempel*
+
+> | Q3 \ix{h}{FE} = 300
+> | Q4 \ix{h}{FE} = 20
+> |
+> 
+> Total förstärkning i steget: 300 $\cdot$ 20 = 6000 ggr.
+> Lägg märke till att \ix{U}{CE} för den integrerade darlingtontransistorn dock aldrig kan understiga 0.7 V.
+>
+> (fundera på varför)
+:::
+
+Koppla enligt bilden i marginalen.
+P1 lämnas som en oansluten kabelända.
+
+
+Håll i kabeländan och hoppa samtidigt någon decimeter upp i luften så du garanterat inte är
+"ansluten" någonstans.
+
+  1. Lyser dioden?[\ansline{4cm}]{.aside}
+
+Försök inte förklara fenomenet, men behåll det i bakhuvudet.
+
+Beräkna ungefärlig total strömförstärkning i hela steget utgående från transistorernas \ix{h}{FE} (mät denna i multimetern eller slå upp i databladet).
+
+  2. Total förstärkning:[\ansline{4cm}]{.aside}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 7 -- Transistorlogik: Inverterare
+
+:::{.column-margin}
+Logikkretsar är idag uppbyggda av ganska många transistorer för att ge egenskaper som hög drivförmåga och låg effektförbrukning.
+För att studera principen fungerar dock nedan presenterade kopplingar utmärkt, då funktionen är densamma.
+Vi ska studera grundläggande logikfunktioner som du redan känner väl och istället fokusera på transistorernas roll i kretsarna.
+:::
+
+Kopplingen nedan ska ses som en funktion där utspänningen **X** beror av inspänningen **A**, som är
+kretsens ingång.
+Potentiometern kopplas som en spänningsdelare för att kunna förse ingången **A** med en varierbar spänning från 0-5 V. 
+
+Både t.ex. 4.7k$\Omega$ eller 10k$\Omega$ fungerar bra om du inte hittar 1 k$\Omega$ (som i ritningen).
+
+![](img4/image7.png){width=97mm}
+
+::::{.column-margin}
+:::{.callout-note title="**Angående logiknivåer**"}
+I digitala kretsar låter man spänningarna representera olika tal, så hög spänning motsvarar logisk '1' och låg spänning motsvarar logisk '0'.
+Logisk nivå betyder att vi låter spänningen representera något, t.ex. att 5 V motsvarar '1'.
+
+|
+| I datorns serieport (om din dator är *cool nog* att ha en sådan) tolkas dock -12 V som '1' och +12 V som '0', så nivåerna kan variera.
+:::
+::::
+
+Koppla upp kretsen ovan.
+Kontrollera med en multimeter att du kan variera spänningen mellan punkt **A** (logikkretsens ingång) och jord.
+Anslut ytterligare en multimeter för att mäta utspänningen (den mellan **X** och jord).
+
+Det framgår att utspänningen oftast ligger nära 0 eller 5 V, då transistorn oftast är bottnad eller strypt.
+I binära system (digitala kretsar) används endast två spänningsnivåer, både på in och utgång; hög (c:a 5 V) eller låg (c:a 0 V).
+Alla spänningar däremellan är otillåtna, även om hög och låg förstås definieras med rejäla marginaler.
+
+
+
+Vid vilken inspänning (**A**) slår utgången (**X**) om mellan '0' och '1'?
+
+  1. Omslagsnivå:[\ansline{4cm}]{.aside}
+
+Kretsen ovan utför en logisk operation.
+  
+  2. Om ingången läggs på '0' blir utgången[\ansline{4cm}]{.aside}
+
+  3. Om ingången läggs på '1' blir utgången[\ansline{4cm}]{.aside}
+
+:::{.column-margin}
+\begin{TAB}(e,8mm,8mm)[7pt]{|c|c|}{|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
+      \textbf{A} & \textbf{X} \\
+      0          &            \\
+      1          &            \\
+\end{TAB}
+:::
+
+Vi kan beskriva detta i en sanningstabell.
+
+  4. Fyll i de tomma cellerna till höger
+
+Koppla en skjutströmställare så att utgången (mittenpinnen) antingen ger 0 V (= logisk '0') eller 5
+V (= logisk '1').
+Plocka bort potentiometern och anslut istället strömställaren till kretsens ingång (**A**).
+Anslut en lysdiod till kretsens utgång (katod till jord) och testa att sanningstabellen stämmer.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 8 -- Transistorlogik: Grind
+
+:::{.column-margin}
+\vspace{228mm}
+Lab OK:
+
+---
+:::
+
+Lägg till en transistor och ett motstånd så du får nedanstående koppling på däcket.
+Anslut **A** och **B** till två logiska omkopplare.
+Anslut utgången, **X**, till en lysdiod.
+
+![](img4/image8.png){width=97mm}
+
+
+Fyll i sanningstabellen:
+
+\begin{center}
+  \begin{TAB}(e,8mm,8mm)[7pt]{|c|c|c|}{|c|c|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
+      \textbf{A} & \textbf{B} & \textbf{X}  \\
+               0 &          0 &             \\
+               0 &          1 &             \\
+               1 &          0 &             \\
+               1 &          1 &             \\
+  \end{TAB}
+\end{center}
+
+Vilken logisk funktion har vi skapat? (Dvs., vad heter grinden?)[\ansline{4cm}]{.aside}
+
+Komplettera kretsen så du får en OR-grind istället.
+Rita ditt tillägg i schemat ovan.
+(Flytta utgången **X** till ett nytt ställe.)
+
+*Om du har tid:*
+
+Bygg och verifiera funktionen och gör en ny sanningstabell.
+Eftersom signalen på ingång **A** bara påverkar utgången om ingång **B** är låg kan vi likna kretsen vid en grind, där **B** styr om **A** får passera.
+Liknande kretsar kallas därför ofta logiska grindar (på engelska *gates*).
+
+
+
+
+
+

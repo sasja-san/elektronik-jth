@@ -1,0 +1,26 @@
+
+\begin{circuitikz}[scale=1.0]
+  \ctikzset{tripoles/european not symbol=ieee circle}
+  \draw
+    % NC/ND are to the right, NA/NB has their .out aligned to in of NC/ND
+    (0,0)                 node[european nand port]             (NC){} % (NC.north) node[above]{NC}
+    ($(NC) + (0,-2)$)     node[european nand port]             (ND){} % (ND.north) node[above]{ND}
+    (NC.in 1) -- ++(-1,0) node[european nand port, anchor=out] (NA){} % (NA.north) node[above]{NA}
+    (ND.in 2) -- ++(-1,0) node[european nand port, anchor=out] (NB){} % (NB.north) node[above]{NB}
+    % NA/NB inputs and CP connection
+    (NA.in 1) node[anchor=east] {S}
+    (NB.in 2) node[anchor=east] {R};
+    ;
+  \draw
+    (NA.in 2) -- (NB.in 1) node[midway](CPJ){}
+    (CPJ.center) to[short,*-] ++ (-0.5,0) node[left]{CP}
+  ;
+  \draw
+    (NC.out) to[short,*-] ++ (0.5,0) node[right]{Q}
+    (ND.out) to[short,*-] ++ (0.5,0) node[right]{\inv{Q}}
+    % Make lines stick out from NC and ND, give aliases
+    (NC.in 2) -- ++(0,-0.5) -- ($(ND.out)+(0, 0.5)$) -- (ND.out)
+    (ND.in 1) -- ++(0, 0.5) -- ($(NC.out)+(0,-0.5)$) -- (NC.out)
+  ;
+\end{circuitikz}
+

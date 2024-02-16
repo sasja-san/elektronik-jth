@@ -1,0 +1,46 @@
+
+\begin{circuitikz}[scale=1.0]
+  \ctikzset{multipoles/thickness=3}
+  \ctikzset{multipoles/dipchip/width=2}
+  \ctikzset{multipoles/dipchip/pin spacing = 0.55}
+  \draw
+    (0,0) node[dipchip,
+               no topmark,
+               num pins=18,
+               hide numbers,
+               draw only pins={1, 2, 6-15, 17, 18},
+               rotate=90,
+               ](C){}
+    (C.pin 11) -- ++ (0,0.3) node[above]{1}
+    (C.pin 12) -- ++ (0,0.3) node[above]{0}
+    (C.pin 13) -- ++ (0,0.3) node[above]{1}
+    (C.pin 14) -- ++ (0,0.3) node[above]{1}
+  ;
+  \node [ocirc, anchor=north](notin2) at (C.bpin 2) {};
+
+  \node [above,  font=\small] at (C.bpin  1) {CP};
+  \node [above,  font=\small] at (C.bpin  2) {MR};
+
+  \node [above,  font=\small] at (C.bpin  6) {\ix{Q}{0}};   %  6 - Q0
+  \node [above,  font=\small] at (C.bpin  7) {\ix{Q}{1}};
+  \node [above,  font=\small] at (C.bpin  8) {\ix{Q}{2}};
+  \node [above,  font=\small] at (C.bpin  9) {\ix{Q}{3}};   %  9 - Q3
+
+  \node [below,  font=\small] at (C.bpin 18) {\ix{S}{0}};
+  \node [below,  font=\small] at (C.bpin 17) {\ix{S}{1}};
+
+  \node [below,  font=\small] at (C.bpin 15) {\ix{D}{SR}};  % 15 - DSR
+  \node [below,  font=\small] at (C.bpin 14) {\ix{D}{0}};
+  \node [below,  font=\small] at (C.bpin 13) {\ix{D}{1}};
+  \node [below,  font=\small] at (C.bpin 12) {\ix{D}{2}};
+  \node [below,  font=\small] at (C.bpin 11) {\ix{D}{3}};
+  \node [below,  font=\small] at (C.bpin 10) {\ix{D}{SL}};  % 10 - DSL
+
+  \draw
+    (C.pin  6) -- ++ (0,-0.5) -- ++ (-7,0) coordinate (P)
+    (C.pin  9) -- ++ (0,-1.0) -- ++ (-8,0) to[crossing] ++ (0,1) coordinate (Q)
+    (C.pin 15) -- ++ (0,0.5) -| (Q)
+    (C.pin 10) -- ++ (0,1) -| (P)
+  ;
+\end{circuitikz}
+

@@ -1,0 +1,943 @@
+---
+title: "Laboration 6"
+subtitle: "Oscilloskopet, OP-förstärkaren och kondensatorer"
+---
+
+\maketitle
+
+## Syfte
+
+Denna laboration syftar till att ge laboranten möjlighet att, med experimentella metoder, bekanta sig med kondensatorer, OP-förstärkare, funktionsgeneratorn och oscilloskopet.
+Samtidigt kommer ellära, komponentmärkning, dioder och transistorns funktion att repeteras.
+Dessutom ska studenten lära sig att hitta relevanta uppgifter i datablad.
+
+## Genomförande
+
+Samtliga laborationer i kursen utförs i grupper om två studenter, i undantagsfall en, men aldrig tre.
+Försök arbeta parallellt så att t ex en mäter och en skriver för att behålla lite tempo genom laborationen.
+
+Det kan vara bra att ha anteckningar och utdelad litteratur till hands.
+
+
+## Utrustning
+
+  * Oscilloskop-prober
+  * Resistanser (Vissa finns i din låda, vissa finns i labsalen):
+      270 $\Omega$, 1 k$\Omega$, 10 k$\Omega$, 100 k$\Omega$, 150 k$\Omega$ 
+      samt ev. ytterligare efter behov/tillgång i salen.
+  * Kondensator 0.1 µF
+  * Kondensator Cx F
+  * Potentiometer 1 k$\Omega$ eller 4,7 k$\Omega$
+  * OP-förstärkare 741
+  * Schmittrigger 74HC14
+  * Transistor BC547B
+
+Övriga komponenter ska finnas i din låda (bla labb-däck, lysdioder, resistorer, skjutströmställare, kopplingstrådar, multimeter.)
+
+## Redovisning
+
+Redovisning sker genom uppvisande av resultat för laborationsansvarig (vid markerade avsnitt).
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Om oscilloskopet
+
+:::{.column-page}
+![](img6/prefix-020.jpg){width=174mm}
+:::
+
+
+:::{.column-margin}
+![](img6/image2.jpg){width=70mm}
+
+För att inte belasta kretsen som vi mäter på så används en så kallad "probe" (uttalas "prååb" på svenska).
+
+Med oscilloskopet vill man ofta mäta höga frekvenser och små signalnivåer, då är det viktigt att man använder proben!
+:::
+
+Bilden ovan visar det nya Tektronix oscilloskop som kommer att användas under laborationen.
+Många funktioner är lättanvända och mycket praktiska, medan andra är totalt obegripliga även för den rutinerade användaren.
+
+Laborationen kommer endast att visa på de mest fundamentala funktionerna och lämnar en hel del för egna experiment.
+Turligt nog finns här ingen säkring, utan experiment kan göras ganska fritt, utan risk för avbrott.
+
+
+\vfill
+
+:::{.callout-important title="**Skolans utrustning**"}
+I denna labb ska du låna de prober som hör till just ditt oscilloskop, och de SKA återlämnas direkt efter labben!!
+
+Alltför många prober har gått sönder för att de använts till helt andra saker, vilket de ju inte tål.
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+\newgeometry{top=20mm, bottom=20mm, left=20mm, right=20mm, layout=a4paper, nomarginpar}
+
+# Inledande mätningar
+
+\Begin{multicols}{2}
+
+Vi skall nu bekanta oss med oscilloskopets grundläggande funktioner. Det första steget är att
+ansluta oscilloskopsproben och verifiera dess funktion och inställningen av instrumentet.
+
+  #. Anslut en probe till kanal 1.
+
+  #. Läs på proben vilken dämpning (eng: "attenuation") denna har.
+  #. Tryck på knappen med gul markering {{< kbd [CHANNEL1] >}}.
+  #. I displayens högra del kan du nu göra inställningar för kanal 1.  
+      Ange, med rätt knapp intill menyn i displayen, probens dämpning.  
+      Detta behövs för att oscilloskopet ska visa rätt spänningsnivåer.
+  #. Kontrollera att "Coupling" är ställd på DC.
+  #. Du ska så småningom använda även kanal 2, så gör motsvarande justering även för denna.
+  #. För att enkelt kunna kontrollera funktionen på proben så finns ett testuttag på instrumentet.
+  #. Anslut proben till "PROBE COMP"-uttaget (längst till höger på oscilloskopet).
+  #. Tryck in knappen {{< kbd [AUTOSET] >}}.
+      Oscilloskopet bör nu självt finna en hyfsad inställning och visa en fyrkantssignal.
+
+
+Om det inte är en perfekt fyrkantsignal, ska du justera proben så att den blir det.
+Använd den lilla ”skruvmejseln” som finns i påsen med proberna.
+
+::::{.callout-warning title="**OBS!**"}
+Se till att du lägger tillbaka skruvverktyget efter användning, så den inte försvinner, samt att du [**aldrig använder något annat verktyg för att justera proben**]{.underline}.
+::::
+
+Autoset-funktionen är ofta bra på att göra grundinställningen, men riskerar samtidigt att förvirra användaren då den ändrar en hel del inställningar.
+Funktionen är därför inte att rekommendera vid mindre justeringar mellan olika mätningar.
+Förlita dig inte på Autoset istället för att lära dig hantera instrumentet.
+Autosets hjälpsamhet håller inte särskilt länge!
+
+\columnbreak
+
+När du använder Autoset får du ofta en kurva som inte är är optimal för att mäta så noggrant som möjligt.
+Du kan använda de stora rattarna under kanalväljarknappen för att ändra skalan i y-led, och den stora ratten i menyn ”horizontal” för att ändra skalan i x-led.
+
+De mindre rattarna flyttar hela kurvan.
+
+  * Om du ställer in skalan i y-led på 1V, så har du 1V/ruta, och kurvan du fått från probe comp blir då 5 rutor hög, dvs 5V.
+  * Om du i x-led ställer in 200µs, har du på motsvarande sätt 200 µs/ruta.
+  * Om du läser av tiden för en hel period får du 5 rutor, dvs 200 $\cdot$ 5 µs = 1ms.
+      Pulståget har alltså frekvensen 1kHz.
+
+Gör nu några enkla mätningar med hjälp av de "cursors" som finns på oscilloskopet.
+
+  #. Tryck på knappen {{< kbd [Cursors] >}}.
+
+  #. Till höger i displayen har du nu tre olika val: tid, amplitud och "screen".
+      Klicka på menyknappen vid screen. Du får då 4 cursors.
+      Vrid på den stora ratten "multipurpose".
+      Då rör. sig den vänstra cursorn för tid.
+      Ställ in den på en uppåtgående flank på fyrkantvågen.
+      Tryck ev på ”fine” för att flytta med lite bättre precision.
+
+  #. Tryck sen på multipurposeknappen.
+      Då kan du flytta den högra cursorn.
+      Flytta den till nästa uppåtgående flank.
+      Finjustera igen.
+      Läs av tiden. 
+      Det bör vara 1ms mellan "cursorna"
+
+  #. Mät nu höjden på kurvan, dvs amplituden:
+      Tryck igen på multipurposeknappen.
+      Du kan nu flytta den övre "cursorn".
+      Flytta den till överkanten på kurvan.
+      Även här kan du finjustera om du klickar på "fine"-knappen.
+
+  #. Klicka igen på multipurpose:
+      Du kan då flytta den undre cursorn.
+      Flytta den till underkanten på fyrkantvågen.
+      Du kan nu läsa av amplituden (5V).
+
+Dessa inställningar kommer du gå tillbaka till ofta för att mäta med oscilloskopet!!
+
+\End{multicols}
+
+\restoregeometry
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Första mätning på en krets
+
+
+:::{.column-margin}
+![](img6/image3.png){width=70mm}
+:::
+
+  #. Koppla nu upp en potentiometer på kopplingsdäcket enligt figuren intill.
+
+  #. Anslut oscilloskopets kanal 1 till punkten A.
+      Glöm inte bort att ansluta oscilloskopets jordreferens.
+
+  #. Ändra tidbasen till 400ms/div (ratten i menyn horizontal) för att bättre kunna se förändringar i signalen.
+
+  #. Testa sedan att vrida på potentiometern samtidigt som ni observerar bilden på oscilloskopet.
+      Bilden bör direkt motsvara spänningen ut från potentiometern.
+
+
+Lägg märke till att du kan justera positionen med den lilla ratten ovanför knappen 1 (gula).
+
+Jordnivån markeras med en pil i vänsterkanten.
+
+Om du fortfarande har 1V/ruta som inställning, ser du att linjen du ser kan flyttas upp och ner med potentiometern mellan linjen där den gula pilen finns, och 5 rutor upp från den
+
+Behåll potentiometern på labb-däcket -- Den ska användas i labbens uppgifter om Schmittrigger.
+
+\vfill 
+
+:::{.callout-note title="**Faktaruta, trigger**"}
+Oscilloskopet ritar kontinuerligt signalen från vänster till höger.
+För att denna ska uppfattas som stillastående påbörjas uppritningen varje gång vid samma spänningsnivå, tröskelnivå = triggernivå.
+
+|
+|Inställningar som påverkar triggerfunktionen är bland annat val av stigande/fallande flank och triggerkälla (= source, t ex kanal 1 eller 2).
+
+  * En pil i fönstrets högerkant indikerar vid vilken spänningsnivå triggning sker.
+
+  * En pil i fönstrets överkant visar den tidpunkt där kurvan passerar inställt triggervärde.
+  * Om pilen flyttas utanför bild kan signalen komma att uppfattas som otriggad.
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Växelspänning
+
+::::{.column-margin}
+:::{.callout-note title="**Om funktionsgeneratorn**"}
+Vi har i kursen mest tittat på likspänningar, men oscilloskopet är användbart både för lik- och växelspänningar.
+En funktionsgenerator kan ge signaler med olika utseende (sinus, fyrkant och triangel), olika amplitud (spänningsnivå) och frekvens.
+Ofta kan den också ge puls-signaler som varierar mellan 0V och 5V, s.k. TTL-signal.
+
+Vi ska här bara titta på några funktioner.
+Vi kommer bara att använda sinusformad växelspänning:
+
+$$u(t) = \widehat{U}\sin(\omega t + \varphi)$$
+
+:::
+::::
+
+Först några benämningar som gäller växelspänningar. Den vanligaste spänningsnivån som anges är
+effektivvärdet, dvs ett mått på vilken likspänning som skulle ge samma effekt som växelspänningen
+ger. Detta mått fås genom att beräkna
+
+$$\sqrt{\frac{1}{T}\int_{0}^{T} u^2(t)dt}$$
+
+
+dvs. roten ur medelvärdet av kvadraten på spänningen (jfr $P = \frac{U^2}{R}$).
+
+På svenska kallas detta värde effektivvärdet och betecknas \ix{U}{eff}.
+På engelska kallas det \ix{U}{RMS} vars namn kommer av hur beräkningen går till:
+
+> **R**oot -- **M**ean -- **S**quare
+>
+> (roten ur, medelvärde, kvadrat)
+
+När vi alltså pratar om att vi har 230V i vägguttagen är det effektivvärdet vi menar, och $\widehat{U}$ (amplituden, ibland kallad \ix{U}{t}) är 325V och \ix{U}{tt} = 650V (topp-topp-värdet på engelska \ix{U}{pp}, peak-to-peak).
+
+\vfill
+
+![](img6/image4.png){width=97mm}
+
+Samband mellan \ix{U}{eff}, \ix{U}{t} och \ix{U}{t-t}:
+
+$$ \textnormal{U}_{\textnormal{eff}} = \frac{\textnormal{U}_{\textnormal{t-t}}}{\textnormal{2} \cdot \sqrt{\textnormal{2}}} $$
+
+$$ \textnormal{U}_{\textnormal{eff}} = \frac{\textnormal{U}_{\textnormal{t}}}{\sqrt{\textnormal{2}}} $$
+
+$$ \textnormal{U}_{\textnormal{t-t}} = 2 \cdot \textnormal{U}_{\textnormal{t}} $$
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+# Uppgift 1 -- Att ställa in funktionsgeneratorn
+
+
+::::{.column-margin}
+
+![](img6/sine-btn.jpeg)
+
+Knappen för sinusvåg.
+
+![](img6/siggen-arrow-keys.jpeg)
+
+Piltangenterna kan användas för att bestämma vilken siffra som ska ändras.
+
+::::
+
+Koppla in kanal CH1 till funktionsgeneratorns output (den understa koax-kontakten till höger).
+
+![](img6/image6.jpeg)
+
+  #. Börja med att ställa in kurvform: sinusvåg.
+
+  #. Tryck sedan på Ampl. som gör att ratten kan användas för att ställa in amplitud. Välj 0.1V.
+
+  #. Tryck sedan på Freq. och vrid ratten tills du får 1kHz.
+      Lägg märke till att du kan välja vilken av siffrorna du vill ändra genom att med pilarna under ratten.
+
+
+::::{.column-margin}
+
+:::{.callout-note title="**Felaktiga mätningar?**"}
+
+Trots att man gjort allting "rätt" så får man ibland felaktiga mätningar.
+För att förstå hur detta kommer sig, se kapitlet om "Terminering" i Appendix.
+
+:::
+
+::::
+
+
+\vspace{2cm}
+
+Du är nu klar för att göra dina mätningar. Kontrollmät spänningen från funktionsgeneratorn på kanal1 (CH1) på oscilloskopet.
+Läs av antal centimeter topp-topp som kurvan har, multiplicera detta värde med den inställning som oscilloskopet står på (t.ex. 5cm $\cdot$ 0.02V/cm = 0.1V).
+
+
+> Stämmer ditt resultat med vad du förväntade dig?[\notes{3}{\marginparwidth}]{.aside}
+> Om inte, förklara.
+
+
+
+Du är nu klar för att göra dina mätningar. Kontrollmät spänningen från funktionsgeneratorn på kanal1 (CH1) på oscilloskopet.
+Det är även så att signalgeneratorn "antar" att det finns en 50$\Omega$-terminering i andra änden kabeln.
+
+Du kan även läsa av periodtiden för sinuskurvan, T. Frekvensen $f$ = 1/T.
+
+> Läs av resultatet:[\notes{1}{\marginparwidth}]{.aside}
+
+Prova gärna att använda cursor-funktionerna igen.
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+# Uppgift 2 -- OP-förstärkaren
+
+Beräkna förstärkningen i kopplingen nedan.
+
+> Vilken förstärkning bör kopplingsschemat ge?[\ansline{4cm}]{.aside}
+
+Koppla upp förstärkaren enligt kopplingsschemat:
+
+::::{.column-margin}
+:::{.callout-tip title="**Hur du skapar \"negativ\" spänning.**"}
+Spänning är alltid relativ.
+Det som du hittils kallat för +5V har egentligen varit 
+
+> *+5V i relation till en referenspunkt som kallats för jord*
+
+Om du kastat om svart/röd pol på din multimeter när du mätt så har du kanske sett att det stått -5V istället.
+
+| På samma sätt som du kan sätta två st. 1.5V-batterier i serie och få ut +3.0V så kan du koppla två spänningsaggregat i serie.
+| 
+| När du kopplar ihop ena sidans + med andra sidans -, ansätt då att du *just där, i den ledaren* har din jord.
+|
+| Använd nu din multimeter för att kontrollera spänningsskillnaderna mellan de två aggregatens utgångar.
+:::
+::::
+
+  #. Koppla in matningsspänningarna (\pm 15 V).
+
+  #. Tänk efter hur du ska åstadkomma både positiv och negativ matning, samt hur du bör jorda.
+  #. Sätt på spänningsaggregatet.
+  #. Det är viktigt att förstärkaren matas med spänning innan insignal läggs på.
+  #. Anslut funktionsgeneratorn som \ix{U}{in} (+ till motståndet , - till jord).
+  #. Använd sinusvåg, ca 100mV, 500Hz
+
+:::{.column-margin}
+\vspace{4cm}
+![](img6/image7.png){width=70mm}
+:::
+
+![](img6/image8.png){width=97mm}
+
+
+:::{.callout-warning title="**OBS!**"}
+\ix{U}{in} i vänstra figuren är spänningen från funktionsgeneratorn, medan \ix{U}{in} i den högra är ingången på OP:n, (ben 2 och 3) taget ur databladet.
+:::
+
+Koppla in \ix{U}{in} till oscilloskopets CH1, och \ix{U}{ut} till CH2.
+Se till att båda kanalerna visas.
+
+> Vilken förstärkning har förstärkaren?[\notes{4}{\marginparwidth}]{.aside}
+
+> Stämmer detta med teorin?
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 3 -- Förstärkarens frekvensberoende
+
+::::{.column-margin}
+:::{.callout-note title="**Hur man räknar fram förstärkning**"}
+Givet två signaler, \ix{U}{ut} och \ix{U}{in} så fås förstärkningen av \ix{U}{in} genom:
+
+$$ \textnormal{g} = \frac{\textnormal{U}_{\textnormal{ut}}}{\textnormal{U}_{\textnormal{in}}} $$
+
+Och förstärkningen i dB fås av:
+
+$$ 20 \cdot \log \frac{\textnormal{U}_{\textnormal{ut}}}{\textnormal{U}_{\textnormal{in}}} $$
+:::
+::::
+
+Mät \ix{U}{ut} och \ix{U}{in} för förstärkaren då frekvensen på funktionsgeneratorn varieras, fyll i tabellen, och rita diagram.
+För att få vettig skala på diagrammet bör vi använda logaritmisk skala både på förstärkningen och frekvensen.
+
+Genom att beräkna \ix{U}{ut}/\ix{U}{in} uttryckt i dB på Y-axeln fås logaritmisk skala (även om vi graderar den linjärt i dB Välj t.ex. 1dB per ruta och rita Y-axeln från -5 till +40).
+
+För att få logaritmisk skala i frekvens-led (x-axeln) kan du rita in en skala där du har jämna avstånd (t.ex. tre rutor på rutat papper) mellan 100, 200, 500,1k, 2k, 5k, 10k, 20k, 50k, 100k och 200k.
+
+Pricka in i diagrammet vid vilken frekvens förstärkningen har sjunkit med 3dB (dvs den frekvens där förstärkningen är 70% av förstärkningen vid låga frekvenser).
+
+\begin{TAB}(c,25mm,7mm)[3pt]{|r|l|l|l|l|}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \normalsize{$f$ (Hz)  } & \normalsize{\ix{U}{ut} } & \normalsize{\ix{U}{in} } & \normalsize{\ix{U}{ut} / \ix{U}{in} } & \normalsize{\ix{U}{ut} / \ix{U}{in} i dB } \\
+  \normalsize{100 } & & & & \\
+  \normalsize{200 } & & & & \\
+  \normalsize{500 } & & & & \\
+  \normalsize{  1k} & & & & \\
+  \normalsize{  2k} & & & & \\
+  \normalsize{  5k} & & & & \\
+  \normalsize{ 10k} & & & & \\
+  \normalsize{ 20k} & & & & \\
+  \normalsize{ 50k} & & & & \\
+  \normalsize{100k} & & & & \\
+  \normalsize{200k} & & & & \\
+\end{TAB}
+
+### Undersök hur förstärkning och gränsfrekvens hör samman för op-förstärkaren
+
+Prova vad som händer med förstärkning och gränsfrekvens då du byter 50k-motståndet mot 10k, resp 100k.
+Mät \ix{U}{ut} och \ix{U}{in} vid en låg frekvens ca 500Hz.
+Höj sedan frekvensen tills utsignalen sjunkit 30% (jämfört med värdet vid 500Hz). Fyll i nedan:
+
+:::{.column-page}
+|
+| \tabto{5mm} 10k: \tabto{15mm} Förstärkning = \ansline{35mm} \tabto{90mm} $f_g$ = \ansline{35mm} 
+|
+| \tabto{5mm} 50k: \tabto{15mm} Förstärkning = \ansline{35mm} \tabto{90mm} $f_g$ = \ansline{35mm} 
+|
+| \tabto{5mm}100k: \tabto{15mm} Förstärkning = \ansline{35mm} \tabto{90mm} $f_g$ = \ansline{35mm}
+:::
+
+Kommentera resultatet:
+
+\vfill
+\notes{2}{\textwidth}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 4 -- Schmittriggern
+
+::::{.column-margin}
+![](img6/schmitt.png){width=70mm}
+::::
+
+
+Nu ska vi introducera en komponent som inte har förevisats på föreläsningarna.
+Schmittriggern är en speciell typ av ingång och återfinns på såväl diskreta logikkretsar som mer avancerade komponenter som t.ex.
+en mikroprocessor.
+Koppla upp kretsen till höger.
+Använd databladet för logikkretsen 74HC14 och verifiera pin-konfigurationen på din uppkoppling.
+Alla oanvända ingångar skall kopplas till jord för att undvika störningar.
+Avkopplingskondensatorn C1 skall sitta så nära IC-kapseln som möjligt.
+(Potentiometern har du redan kopplat upp)
+
+Använd nu oscilloskopets kanal 1 för att mäta punkten A och kanal 2 för att mäta punkten X.
+Genom att vrida på potentiometer Pot1 så kan vi applicera en insignal, A, mellan 0V och 5V.
+Om inställningen på oscilloskopet är korrekt så skall du kunna se hur kurvan för kanal 1 ändrar sig när du ändrar inställningen på potentiometern.
+
+::::{.column-margin}
+:::{.callout-warning title="**OBS!**"}
+Se bild och beskrivning längst ner på nästa sida innan du börjar koppla in din Schmittrigger.
+:::
+::::
+
+Observera utsignalen på oscilloskopet och anteckna vid vilka nivåer på ingången, A, som omslag sker på utgången, X. Notera att det finns två fall när du fyller i tabellen:
+
+  * när ingången går från låg till hög
+  * samt när ingången går från hög till låg.
+
+
+\begin{flushright}
+  \begin{TAB}(c,20mm,12mm)[10pt]{|r|r|r|}{|c|c|c|}
+    Stimuli på insignal     & Omslagsnivå (V)   & Utsignal från Schmittriggern \\
+    A går från 0V till 5V             &                   &            \\
+    A går från 5V till 0V             &                   &            \\
+  \end{TAB}
+\end{flushright}
+
+
+Det bör framgå av ovanstående iaktagelser att vi använder en Schmittrigger-inverterare.
+Den fungerar alltså som en vanlig inverterare, men med skillnaden att ingången har ett annat beteende.
+Konsultera nu databladet och notera de angivna omslagsnivåerna.
+De återfinns i sektionen Transfer Characteristics och heter \ix{V}{T+} och \ix{V}{T-}.
+
+>
+> |
+> | \ix{V}{T+}: \ansline{40mm}
+> |
+> | \ix{V}{T-}: \ansline{40mm}
+>
+
+Läs nu igenom faktarutan på nästa sida och fundera på vad man skulle kunna använda Schmittriggerns beteende till.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+:::{.column-margin}
+![](img6/Smitt_hysteresis_graph.svg){width=70mm}
+:::
+
+:::{.callout-note title="**Faktaruta, Schmittrigger**"}
+
+|
+| Till skillnad från de logiska funktioner vi kopplade upp i tidigare laborationer så arbetar Schmittriggern med två olika omslagsnivåer. Den slår om från '0' till '1' vid en distinkt spänningsnivå, och från '1' till '0' vid en *annan* spänningsnivå. Detta beteende på ingången kallas för "hysteres". Hysteresen gör att kretsen inte bara reagerar på insignaler utan har ett "minne", som beror på systemets tidigare tillstånd.
+|
+| Den viktigaste applikationen av Schmittrigger är för att motverka effekten av brusiga och stökiga insignaler till digitala kretsar. Avståndet mellan de två omslagsnivåerna skapar en marginal mot förändringar i signalen. Grafen intill illustrerar hur en Schmittrigger ingång skiljer sig från en vanlig ingång:
+| 
+| Vi ser i grafen intill hur insignalens kraftiga störningar ger oss ett pulståg (signal A) om vi inte använder Schmittriggern. Utsignalen från Schmittriggern reagerar inte på svängningarna runt den streckade röda linjen, och ger därför en renare digitaliserad signal.
+| 
+| Det är vanligt att se att vissa ingångar på digitala kretsar har en Schmittrigger ingång. Då kan det vara lämpligt att använda dessa ingångar till signaler som kan innehålla mycket störingar och som man endast vill ha en digital avläsning på.
+:::
+
+
+
+:::{.column-margin}
+\vspace{42mm}
+![](img6/float-prevention.png){width=70mm}
+:::
+
+\vfill
+
+När du kopplar in en IC som denna, anslut då de oanvända delarna av kretsen som på bilden.
+Detta förhindrar störningar i din krets, vilket ger dig bättre mätvärden.
+
+Att koppla de oanvända delarna av ICn enligt detta mönster är relevant för resten av övningarna i denna laboration.
+
+
+
+
+
+
+
+
+
+
+
+
+{{< pagebreak >}}
+
+# Uppgift 5 -- Kondensatorn
+
+Komplettera nu uppkopplingen med en kondensator (okänd) och ett motstånd enligt bilden.
+
+::::{.column-margin}
+:::{.callout-note title="**Faktaruta, kondensatorer, $\tau$ (tau) och kapacitans i inbyggda system**"}
+Kondensatorer har en storhet som mäts i Farad (F).
+Om vi har att C = 33nF = 33$\cdot\textnormal{10}^{-\textnormal{9}}$F så säger vi att dess "kapacitans" är 33 nanoFarad.
+\strut
+Tau ($\tau$) beräknas med
+
+$$\tau = \textnormal{RC}$$
+
+Den har enheten sekunder, och kan beskrivas som
+
+> När en signal ska gå från X volt till Y volt, hur lång tid tar det tills den kommit 63% av vägen från X till Y?
+
+R är den resistans som signalen (strömmen) måste passera igenom.
+
+C är den kapacitansen hos alla kondensatorer som måste fyllas/tömmas på laddning i och med att spänningen ändras.
+\strut
+Den totala kapacitansen i ett (parallelkopplat) system fås av:
+$$  \textnormal{C}_{\textnormal{tot}} = 
+    \textnormal{C}_{\textnormal{1}} + 
+    \textnormal{C}_{\textnormal{2}} + 
+    \textnormal{C}_{\textnormal{3}} + ... $$
+Varje \ix{C}{x} bidrar till att hålla tillbaka signalen när den ska propagera i ledaren.
+\strut
+Detta kan leda till problem (speciellt i inbyggda system) på lite olika sätt, så det är väldigt bra att känna till $\tau$.
+Ju snabbare signalen ska slå om desto mer relevant blir $\tau$.
+
+I kursen Enchipsdatorer kommer konceptet att komma tillbaka.
+:::
+::::
+
+![](img6/image12.png){width=97mm}
+
+Anslut oscilloskopets kanal 1 till punkten RC, mellan kondensatorn och motståndet.
+Använd en sladd eller strömbrytare för att koppla in R1 till Jord alternativt till +5V.
+Behåll triggningsläge Auto så att du kan se signalen samtidigt som du justerar.
+Med R1 kopplad till jord så bör kanal 1 på oscilloskopet visa en signal på nära 0V.
+Skalan på y-axeln skall vara 1V/div.
+Flytta ner kanal 1 med 3 rutor så att 0V är en ruta ovanför den undre kanten.
+
+
+Ställ nu in triggningen så att den reagerar på stigande flank (Rising Edge) och en nivå på ca 0.5V.
+Kontrollera även att triggkällan är inställd till kanal 1 och att triggningsläget är ”Single”.
+Tidbasen bör vara inställd på 400ms/div.
+Det ger oss totalt ca 4s (10 $\cdot$ 400 ms = 4s) i ett svep.
+De flesta oscilloskop har 10 rutor bred skärm. Detta oscilloskop har lite större skärm, men principen är densamma.
+
+När oscilloskopet arbetar i triggningsläge Single så används knappen `[Single]` för att 'ladda' instrumentet för att göra en ny mätning.
+I displayen syns Trigd? Instrumentet är då redo för en signal.
+
+Slå på strömbrytaren så att kondensatorn laddas upp (OBS! du behöver se till att kondensatorn är helt urladdad innan du slår på kontakten, annars kan det vara så att spänningen på kondensatorn är över 1V hela tiden och då kommer du inte se något på oscilloskopet)
+
+När triggningsvillkoren uppfylls så kommer instrumentet att visa ”Trig'd” och genomföra mätningen.
+Efter att hela 4s-svepet är genomfört så visas resultatet.
+
+{{< pagebreak >}}
+
+Justera nu inställningen för x-axeln så att starten på kurvan hamnar längst till vänster på bilden.
+Det kan ta några försök att få det perfekt inställt.
+Skissa bilden av uppladdningen nedan:
+
+![](img6/image13.png){width=97m}
+
+Avläs nu vid vilken tid kondensatorn har laddats upp till 63%.
+Använd formeln nedan för att räkna ut vilken kapacitans er kondensator har:
+
+$$\tau = \textnormal{RC} \Longrightarrow \textnormal{C} = \frac{\tau}{\textnormal{R}} =  \frac{\quad\quad\quad\quad\quad\quad\quad\quad}{\textnormal{150k} \Omega}$$
+
+$$\textnormal{C} =$$
+
+Som du märker behöver man veta lite om den signal man ska mäta på innan man börjar.
+Men med de nya oscilloskop vi använder nu kan man göra en hel del inställningar även efter mätning med single-svep.
+
+Om du förstorar bilden så att kurvan ”försvinner ut ur bild” kan du ändå hitta den, genom att det finns ett litet förnster högst upp på displayen som visar vilken del av svepet som är inne i bilden.
+Du ser också T:et som anger tiden då svepet triggades, dvs tidpunkten då något hände som oscilloskopet reagerade på.
+Den måste vara innanför de vita ”hakparenteserna” för att du ska se händelsen i bilden.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 6 -- Oscillator med Schmittrigger-inverterare
+
+:::{.column-margin}
+![](img6/image14.png){width=70mm}
+:::
+
+Nu skall vi kombinera Schmittriggern och RC-nätet till en ny krets med en mycket användbar funktion.
+Avlägsna potentiometern och anslut istället RC-nätet till Schmittriggern enligt bilden.
+
+
+Försök nu att lista ut hur kretsen kommer att bete sig.
+Börja med att göra antagandet att punkten RC har potentialen 0V.
+Hur påverkar det Schmittriggerns utgång? Vad kommer att hända med punkten RC då?
+Skriv ner ditt resonemang steg för steg nedan:
+
+\vfill
+
+  #. Punkten RC har potentialen 0V.
+\vspace{6mm}
+  #. \ansline{14cm}
+\vspace{3mm}
+  #. \ansline{14cm}
+\vspace{3mm}
+  #. \ansline{14cm}
+\vspace{3mm}
+  #. \ansline{14cm}
+
+Testkör nu uppkopplingen!
+Använd oscilloskopet till att observera de två signalerna RC och X.
+Det kan vara lämpligt att låta X trigga svepen.
+Skissa de två signalerna nedan (tips, börja med X):
+
+:::{.column-page}
+![](img6/image15.png){with=175mm}
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+:::{.column-margin}
+\vspace{236mm}
+Lab OK:
+
+---
+
+:::
+
+Vi skall nu använda oscillatorns pulståg för att få en lysdiod att blinka.
+För att inte belasta utgången på Schmittriggern så kommer vi att använda en transistor för att driva lysdioden.
+Studera tillägget till kopplingen i schemat.
+
+![](img6/image16-crop.png){width=97mm}
+
+Beräkna nu strömmen som kommer att gå genom lysdioden D1.
+Antag följande parametrar:
+
+
+  * X = 5V
+  * spänningsfall över D1 (\ix{U}{D1}) = 1.9V
+  * spänningsfall Bas-Emitter (\ix{U}{BE}) = 0.7V,
+  * spänningsfall Collector-Emitter (\ixx{U}{CE}{sat}) = 0.2V
+  * strömförstärkning (\ix{h}{FE}) = 290 ggr
+
+
+Plats för beräkningar:
+
+\vfill
+
+Strömmen genom lysdioden beräknas till \ansline{32mm}
+
+Koppla upp lysdioden och transistordrivaren till din oscillator och verifiera att lysdioden blinkar.
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Appendix -- Spänningsfördelning
+
+:::{.column-margin}
+  {{< include img6/appendix-a.tex >}}
+:::
+
+Först en liten repetition om hur spänning fördelar sig.
+
+KVL ger att \ix{V}{S} = \ix{V}{1} + \ix{V}{2} + \ix{V}{3}.
+
+Låt oss nu säga att \ix{V}{S} = 24V och försöka finna \ix{V}{2}.
+
+Antingen räknar vi ut totala strömmen genom kretsen och får \ix{V}{2} = \ix{I}{tot} $\cdot$ \ix{R}{2}. Ett lite enklare sätt att räkna på spänningsfördelning över *seriekopplade* motstånd ges av
+
+$$  \textnormal{V}_\textnormal{X} = 
+    \textnormal{V}_\textnormal{S} \cdot
+    \frac{\textnormal{R}_\textnormal{X}} {\textnormal{R}_\textnormal{tot}} $$
+
+...så vi får att...
+
+$$  \textnormal{V}_\textnormal{2} = 
+    \textnormal{24} \cdot
+    \frac{\textnormal{2k}} {\textnormal{1k + 2k + 3k}} = \textnormal{8V} $$
+
+
+# Appendix -- Signalgeneratorn och terminering
+
+:::{.column-margin}
+![](img6/siggen-osc-tillsammans.jpg)
+
+Siffrorna 50$\Omega$ och 1M$\Omega$ tas från vad som är tryckt intill BNC-kontakterna på de olika instrumenten.
+
+![](img6/terminator.jpg)
+
+Till höger är en ensam 50$\Omega$-terminator.
+Till väster är en BNC-förgrenare med en sladd ansluten i ena änden och en terminator i andra.
+:::
+
+Först låt oss se det ideala sättet att överföra en signal på.
+
+  {{< include img6/appendix-b.tex >}}
+
+Ovanför kan man se hur signalgeneratorn (SG) "antar" att din krets är konstruerad.
+Den vänsta delen är SG och den högra sidan är signalens "mottagare".
+
+När du ställer in amplituden på en HP33120A så att den ska ha t.ex. "600mVPP" så görs den inställningen så att dessa 600mV ska vara spänningsfallet över SG:ns interna motstånd blir 600mV och så att signalens mottagare ska få 600mV över sig.
+\ix{V}{sig} (från ritningen) i detta fall blir alltså 1200mV.
+
+
+Titta på på ekvationen från det tidigare appendix-kapitlet.
+Nu finns bara två motstånd: 50$\Omega$ och 1M$\Omega$.
+
+\ix{V}{sg} är spänningen över motståndet inne i SG:n.  
+\ix{V}{osc} är spänningen över oscilloskopets interna motstånd, från vilket dess mätvärden kommer.
+
+$$ \textnormal{V}_\textnormal{sg} = 
+    \textnormal{V}_\textnormal{sig} \cdot
+    \frac{\textnormal{50}}{\textnormal{1\ 000\ 000 + 50}} $$
+
+$$ \textnormal{V}_\textnormal{osc} = 
+    \textnormal{V}_\textnormal{sig} \cdot
+    \frac{\textnormal{1\ 000\ 000}}{\textnormal{1\ 000\ 000 + 50}} $$
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Om du kopplat din krets så här så är detta varför (trots att prob-dämpningen är korrekt osv.) du ser "dubbla" den inställda spänningen.
+
+  {{< include img6/appendix-c.tex >}}
+
+
+En bra *heuristik*[En heuristik är en användbar approximation. Den brukar inte vara 100% sann, men för någon som är ny till ett ämne så kan den vara till mycket stor nytta. Du har kanske fått använda "elektronskal" som en heuristik när du studerat kemi?]{.aside} är att
+
+> Ett motstånd R1 parallellt med ett väldigt, väldigt stort motstånd R2 blir detsamma som R1.
+> Detta kan formuleras som $\textnormal{R1} \parallelsum \infty \textnormal{ = R1}$.
+
+Så för enkelhets skull säger vi att 50$\Omega\ \parallelsum$ 1M$\Omega$ = 50$\Omega$.
+
+::::{.column-margin}
+:::{.callout-tip title="**Resistanser vid signalöverföring**"}
+
+Att man ens har motstånd vid signalöverföringar är bl.a. för att undvika att signalen "studsar" i ledaren.
+Att de ska matcha på sändarsidan och mottagarsidan gör att vissa former av brus minimeras.
+
+Utöver R = 50$\Omega$ för signalöverföring brukar även 75$\Omega$ och 600$\Omega$ förekomma.\strut
+
+
+600$\Omega$ brukar användas som standard för ljudsystem och även i olika professionella telekommunikationssystem.\strut
+
+
+75$\Omega$ används i många kommunikationssystem. T.ex. så ska *ethernet* (i vardagsspråk "nätverkskabel" -- ett av de att fysiskt sätten att överföra nätverkskommunikation på) termineras över ett motstånd på 75$\Omega$.
+:::
+::::
+
+
+Här är alltså kretsen som bör kopplas om du önskar att se dina inställda värden i ditt oscilloskop.
+
+
+  {{< include img6/appendix-d.tex >}}
+
+
+Ritningen visar alltså en terminator-kapsel inkopplad i en BNC-förgrenare, satt på oscilloskopets ingång.
+
+Kan du inte få tag i detta så koppla i stället in ett externt 50$\Omega$-motstånd och mät över detta med en prob.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

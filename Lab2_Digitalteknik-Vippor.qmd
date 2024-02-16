@@ -1,0 +1,423 @@
+---
+title: "Laboration 2"
+subtitle: "Digitalteknik - Vippor"
+---
+
+\maketitle
+
+
+## Syfte
+Att koppla upp de grundläggande kretsar som behövs för att bygga sekvenskretsar: minneselement (låskretsar), enkla räknare (JK-vippor) och skiftregister (D-vippor).
+
+
+## Utrustning
+
+För denna och nästa laboration kommer du att behöva en klockkrets.
+Det bör finnas förberedda, men gör det inte det så finns instruktioner på hur du bygger en i Appendix (sista sidan) i detta häfte.
+
+För att se vad som händer på Q och \inv{Q} (d.v.s. utsignalerna från en krets) kopplar du lämpligen in en lysdiod _i serie med ett motstånd_.
+Vanligtvis brukar 220$\Omega$ rekomenderas för seriekoppling med en diod.
+Men för kretsarna i denna laboration är kan detta dra för mycket ström.
+Stryp strömmen ytterligare genom att välja 500$\Omega$ < R < 2k$\Omega$.
+
+::::{.column-margin}
+:::{.callout-note title="**Om \"HC\" och \"LS\"**"}
+När det står att en krets heter 74HCxx så betyder "HC" i namnet "high-speed CMOS". Ibland finns det bara kretsar som heter 74LSxx i labblådorna. "LS" står för "low-power schottky". För labbarna som du ska göra går båda precis lika bra. Enda skillnaden är att LS ska ligga på 5.0V med 5% tolerans. En HC-krets kan däremot drivas av 2.0--6.0V. Använd din multimeter för att kontrollera vad spänningskuben ger [innan]{.underline} du kopplar in kretsarna.
+:::
+::::
+Komponenter du behöver låna under laborationen:
+
+  * 1 st NAND-grind 74HC00,
+  * 1 st NOR-grind 74HC02,
+  * 2 st JK-vippa 74HC73 (eller 74HC76),
+  * 2 st D-vippa 74HC74.
+
+Till klockan -- **Endast om du bygger den själv!**
+
+  * 1 st Skjutströmställare
+  * 1 st 74HC00
+
+Övriga komponenter som behövs ska finnas i din låda, bl.a. labb-däck, spänningsmatning, dioder, resistorer, kopplingstrådar, multimeter.
+
+
+## Redovisning
+
+Visa sanningstabeller, tidsdiagram och svar på frågor för labbhandledare.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 1 -- Låskretsar, Minneselement
+
+Koppla upp en låskrets enligt schemat nedan och fyll i sanningtabellen.
+
+:::{.callout-warning title="**OBS!**" icon=true}
+För att fylla i sanningtabellen krävs att du inte bara testar igenom tabellen en gång, utan t.ex. återgår till 00 igen.
+Testa t.ex. ordningen 00, 10, 00, 01, 00, 11.
+
+| 
+| Tänk på att om S eller R (dina insignaler) ej är inkopplade så är det [**INTE**]{.underline} samma sak som att de är 0.
+:::
+
+:::{.column-margin}
+  \begin{TAB}(e,8mm,8mm)[7pt]{|c|c|c|c|}{|c|c|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
+    S & R & Q & \inv{Q} \\
+    0 & 0 &   &         \\
+    0 & 1 &   &         \\
+    1 & 0 &   &         \\
+    1 & 1 &   &         \\
+  \end{TAB}
+:::
+
+\begin{flushright}
+  {{< include img2/L2-U1.tex >}}
+\end{flushright}
+
+\vfill
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 2 -- Låskretsar, Minneselement
+
+Koppla upp en låskrets enligt schemat nedan och fyll i sanningtabellen.
+Använd kombinationer av S och R enligt samma mönster som i förra uppgiften.
+
+:::{.column-margin}
+\begin{TAB}(e,8mm,8mm)[7pt]{|c|c|c|c|}{|c|c|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
+  \inv{S} & \inv{R} & Q & \inv{Q} \\
+        0 &       0 &   &         \\
+        0 &       1 &   &         \\
+        1 &       0 &   &         \\
+        1 &       1 &   &         \\
+\end{TAB}
+:::
+
+:::{.column-margin}
+\vspace{52mm}
+\notes{3}{\marginparwidth}
+:::
+
+\begin{flushright}
+    {{< include img2/L2-U2.tex >}}
+\end{flushright}
+
+\vspace{10mm}
+
+  1. Vad skiljer dessa båda låskretsar från varandra?
+
+  2. Är det någon kombination av insignaler som är mindre lämplig? Varför är den det?
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 3 -- Utbyggnad av låskrets till vippa
+
+:::{.column-margin}
+\vspace{228mm}
+Ok, så långt:
+
+---
+
+:::
+
+Undersök vad som händer med låskretsen om du ”grindar den”, dvs. gör om den till en vippa.
+
+\begin{center}
+
+  {{< include img2/L2-U3a.tex >}}
+
+\end{center}
+
+:::{.column-page}
+
+  {{< include img2/L2-U3b.tex >}}
+
+:::
+
+Var noga med att rita in Q och \inv{Q} vid varje ändring av S, R och klockpulsen (CP), dvs vid varje streckad linje.
+
+Hur fungerar kretsen?
+(Vilka kombinationer av S och R är (bör) inte vara tillåtna?
+När slår låskretsen om?
+
+\vspace{10mm}
+\notes{5}{\textwidth}
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 4 -- JK-vippan
+
+Undersök JK-vippans (74HC76 eller 74HC73) funktion.
+Rita först tidsdiagram.
+Var noga med att ändra en signal i taget enligt diagrammet nedan.
+Fyll sedan i sanningstabellen.[Du måste testa kombinationerna på J och K flera gånger.]{.aside}
+Du måste dessutom hålla kvar JK under ett antal klockpulser.)
+Klockpuls fås genom att du med en omkopplare kopplar in hög, låg nivå på CP.
+
+
+:::{.column-margin}
+\notes[16pt]{5}{\marginparwidth}
+:::
+
+  1. På kretsarna finns signalerna CLEAR och ev. SET. (HC73 har ingen SET, bara RESET). Hur bör du koppla in dessa?
+
+  2. Vad kallas det när insignaler inte är inkopplade? Vilka effekter kan det ha?
+
+\vspace{2cm}
+
+
+:::{.column-margin}
+  \begin{TAB}(e,8mm,8mm)[7pt]{|c|c|c|c|}{|c|c|c|c|c|}% (rows,min,max)[tabcolsep]{columns}{rows}
+      J &       K & Q & \inv{Q} \\
+      0 &       0 &   &         \\
+      0 &       1 &   &         \\
+      1 &       0 &   &         \\
+      1 &       1 &   &         \\
+  \end{TAB}
+:::
+
+\begin{flushright}
+  {{< include img2/L2-U4a.tex >}}
+\end{flushright}
+
+
+\vspace{1cm}
+
+Ändra en signal i taget enligt schemat och fyll i vad som händer på Q och \inv{Q} i detta tidsdiagram.
+
+:::{.column-page}
+{{< include img2/L2-U4b.tex >}}
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 5 -- JK-vippan som räkneelement
+
+:::{.column-margin}
+\vspace{228mm}
+Ok, så långt:
+
+---
+
+:::
+
+<!-- 
+::::{.column-margin}
+:::{.callout-note title="**Om kapslar**"}
+"Kapsel" är vad man kallar kallar det som en komponents transistorer (och andra delar) är förpackat i.
+En bildsökning på "different ic packages" visar vilka några olika möjligheter som finns.
+:::
+::::
+-->
+
+::::{.column-margin}
+:::{.callout-tip title="**Tips för denna uppgift**"}
+Läs igenom frågorna först.
+
+Du kommer att behöva bygga om kretsen halvvägs genom frågorna.
+Se till att detta inte blir alltför jobbigt för dig.
+:::
+::::
+
+JK-vippan används på olika sätt som baselement i räknare.
+Bygg upp en räknare med hjälp av tre JK-vippor.
+Detta kräver 2 st. 74HC73 eller 2 st. 74HC76 eftersom varje kapsel innehåller 2 vippor.
+Denna räknare kallas asynkron räknare därför att klockpulsen in till de olika vipporna är olika.
+
+Låt insignalerna J och K vara '1' hela tiden, och låt klockpulsen variera.
+
+:::{.column-page} 
+
+\begin{center}
+{{< include img2/L2-U5a.tex >}}
+\end{center}
+
+
+\begin{center}
+{{< include img2/L2-U5b.tex >}}
+\end{center}
+
+:::
+
+:::{.column-margin}
+  \notes{8}{\marginparwidth}
+:::
+
+Fyll i tidsdiagramet för \ix{X}{0}, \ix{X}{1} och \ix{X}{2}.
+
+  #. Räknar räknaren uppåt eller nedåt?
+
+  #. Vilket är det största tal den kan räkna till?
+
+Koppla nu \ix{X}{0} och \ix{X}{1} till en NAND-grind och koppla in denna till alla CLR-ingångarna.
+
+  3. Hur långt räknar räknaren nu?
+
+  #. Hur fungerar SET respektive CLR-ingångarna (aktivt låga)?
+  #. Hur får du räknaren att räkna åt andra hållet?
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+# Uppgift 6 -- D-vippan som skiftregister
+
+:::{.column-margin}
+\vspace{228mm}
+Lab OK:
+
+---
+
+:::
+
+Använd kretsen 74HC74.  
+Undersök D-vippan genom att på D-ingången koppla in sekvensen 0 1 0 1, låt det gå ca 4 klockpulser för varje ny insignal.
+Hur fungerar D-vippan? Rita sanningstabell där du anger vad som finns på Q efter en klockpuls.
+
+Koppla upp 4 D-vippor enligt:
+
+:::{.column-page} 
+  \begin{center}
+    {{< include img2/L2-U6a.tex >}}
+  \end{center}
+:::
+
+
+::::{.column-margin}
+\vspace{5mm}
+Värdena för \ix{Q}{A}, \ix{Q}{B}, \ix{Q}{C} och \ix{Q}{D} som du ska skriv i tabellen är vad som ligger på dem _efter_ klockpulsen.
+
+Eftersom det inte går att veta vad som kommer att ligga på utgångarna när du först ger ström till kretsen så bör \ix{Q}{B}, \ix{Q}{C} och \ix{Q}{D} på första raden ha värdet **X**.
+
+\vspace{5mm}
+
+:::{.callout-note title="**Kort sammanfattning om minneskretsar**"}
+En D-vippa är nog den som är mest naturlig att tänka på när man tänker på minne.
+
+| För den så säger användaren "Spara det som finns på D just nu". I det avseendet fungerar den som RAM gör: Du har ett värde och du sparar undan det för senare användning.
+| 
+| För en SR-latch är det lite knepigare, där säger användaren "Spara en etta." eller "Spara en nolla."
+| 
+| JK-vippor är som en klock-skyddad (Uppgift 3) SR, men J=K=1 har ett väldefinerat beteende.
+:::
+::::
+
+\begin{flushright}
+  {{< include img2/L2-U6b.tex >}}
+\end{flushright}
+
+Fyll i tabellen och beskriv hur skiftregistret fungerar:
+
+\vfill
+
+\notes{4}{\textwidth}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+# Appendix
+
+## Förberedd avstudsad klockkrets
+
+:::{.column-margin}
+Ibland får man leta en del för att hitta.
+Rota bland tidigare elevers kvarlämnade kopplingsdäck (i labbsalarnas lådor och skåp) mm.
+
+| Om du endast kan hitta en klocka på ett bräde som ligger i något skåp så är det extremt hög skyll-dig-själv-faktor på att ha lämnat den där.
+| Bara ta den.
+:::
+I labbsalarna bör det finnas klockkretsar som ner ut som den på bilden.
+Gör det inte det så får egna byggas enligt instruktionerna på denna sida.
+Detta kretskort är baserat på Schmittrigger-designen på denna sida.
+
+![](img2/clock-circuit.jpg)
+
+
+## Avstudsad med NAND och skjutströmställare
+
+:::{.column-margin}
+\vspace{15mm}
+Denna strömbrytarkrets ger kontaktstudsfri signal ut på Q.
+För att få en klockpuls ska du alltså dra din skjutströmställare fram och tillbaka igen för varje klockpuls.
+:::
+\begin{flushright}
+{{< include img2/L2-APa.tex >}}
+\end{flushright}
+
+
+## Avstudsad med Schmittrigger
+
+
+:::{.column-margin}
+\vspace{20mm}
+En annan möjlighet är att bygga med fjädrande tryckknapp. 
+Då krävs ett antal komponenter som vi ännu inte gått igenom, men kommer att göra under kursens gång.
+:::
+\begin{flushright}
+{{< include img2/L2-APb.tex >}}
+\end{flushright}
+
+

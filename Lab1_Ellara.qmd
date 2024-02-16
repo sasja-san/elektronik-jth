@@ -1,0 +1,630 @@
+---
+title: "Laboration 1"
+subtitle: "Ellära"
+---
+
+\maketitle
+
+
+## Syfte
+
+Denna laboration tar upp grunderna i mätteknik och ellära.
+I första hand syftar den till att bekanta dig med viss utrustning i salen, såsom kopplingsdäck och multimeter, samt repetera elläran från lektionerna.
+
+
+## Genomförande
+
+::::{.column-margin}
+:::{.callout-note title="**Tips för att hinna**"}
+Lab 1 består av rätt många mätningar, även om de är enkla.
+Det krävs ett relativt högt tempo för att hinna med alla uppgifter under schemalagd tid.
+Det kan vara lämpligt att en gruppmedlem läser frågan och skriver ned mätvärden medan den andra utför mätningar.
+
+Det underlättar att ha två multimetrar, en som alltid är inställd på spänningsmätning och en som är inställd för att mäta ström, så behöver man bara byta säkring i den ena...
+:::
+::::
+
+Kursens laborationer utförs i grupper om två -- i undantagsfall en -- men aldrig tre.
+Att vara två underlättar eftersom många uppgifter kräver att man resonerar sig fram till en lösning, men se till att båda är aktiva.
+
+Ibland förekommer ord i lab-PM som du inte känner igen sen tidigare.
+Detta är avsiktligt för att du ska lära dig korrekta namn på komponenter och fenomen.
+Det är alltså inte ett test på om du redan kan termerna, utan en pedagogisk finess för att du ska lära dig termerna.
+
+:::{.callout-warning title="**OBS!**"}
+I denna labb använder du spänningsaggregatet i labbsalen.
+När du gör det så får din spänningsförsörjningskrets från labb-lådan inte vara inkopplad samtidigt.
+:::
+
+Uppgifterna består av elektriskt väldigt enkla kopplingar för att du ska vänja sig vid instrument, kopplingsdäck m.m.
+De sista uppgifterna kan dock ha en något högre teoretisk svårighetsgrad.
+Det kan då vara bra att ha anteckningar och litteratur till hands.
+
+Resterande laborationer kommer upplevas som betydligt lugnare[^note-lie] speciellt eftersom man då är mer bekant med utrustningen.
+
+[^note-lie]: Detta är en lögn skriven av en tidigare lärare. När du når fram till labb 4-5 så är det *kanske* sant att det blir lugnare. De första veckorna av den här kursen är när du bestämmer dig för om du vill gå om utbildningens första år. Ligger du efter när sportlovet är slut? Gå om. \newline --- någon som sett många misslyckas
+
+
+## Utrustning
+
+Så gott som allt du behöver för denna laboration skall finnas i lådan som handledarna tagit fram.
+
+:::{.column-margin}
+Denna lista är primärt till för handledarna när de fyller på inför kursstart.
+Hämta det du behöver i och med att uppgiften dikterar det.
+:::
+
+  * Resistorer:  1 $\Omega$, 2 x 56 $\Omega$, 560 $\Omega$, 2 x 1 k$\Omega$ 
+  * Effektmotstånd: 100 $\Omega$, 270 $\Omega$
+  * Lampa, 12V (detta är **EJ** en lysdiod)
+
+## Redovisning
+
+Redovisning sker genom uppvisande av resultat för laborationsansvarig (vid markerade avsnitt).
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 1 -- Komponentmärkning
+
+Plocka fram motstånd enligt nedan.
+Du behöver två av varje.
+Om motstånden sitter på band är det bra att klippa av några mm i ändarna för att slippa klisterrester.
+Använd utdelat material för att identifiera dem med hjälp av färgkod och notera dessa nedan.
+
+\vspace{5mm}
+
+> 56 $\Omega$ \tabto{15mm}\ansline{14cm}
+
+\vspace{5mm}
+
+> 560 $\Omega$ \tabto{15mm}\ansline{14cm}
+
+\vspace{5mm}
+
+>  1 k$\Omega$ \tabto{15mm}\ansline{14cm}
+ 
+Kontrollmät motstånden med en multimeter.
+
+:::{.callout-tip title="**Att mäta motstånd**"}
+Om multimeterns skärm säger "OL" så står det för "Over Limit".
+Din "Limit" är den resistans multimetern är ställd på.
+Om du har den ställd på 2000$\Omega$ och mäter ett motstånd som är 2001$\Omega$ så kommer du att få "OL".
+
+|
+| Det *går* att mäta motstånd på t.ex. 12$\Omega$ när den är ställd på 2000, men du borde ställa om den till 20$\Omega$. Då får du mer exakta mätvärden.
+:::
+
+\vfill
+
+
+
+
+
+
+
+
+
+# Uppgift 2 -- Nätaggregatet
+
+
+::::{.column-margin}
+::: {.callout-note title="**För Topward-aggregaten**"}
+Skjutomkopplarna som sitter mellan anslutningspunkterna ska ställas i läge IND (åt vänster). Anslut till + och – på Master- eller Slave-sidan.
+:::
+::::
+
+På bänkarna finns spänningskuber från Velleman (E3303, E3315) eller Topward (E3317), med vilka man kan variera utspänningen mellan 0 och 30 V och samtidigt begränsa den maximala strömmen.
+
+
+Ställ in spänningen 6 V och kortslut sedan den varierbara utgången med en lab-kabel.
+Nu går det maximalt med ström.
+Vrid ner spänningskubens strömbegränsning till 0,1 A.
+Strömmen kan nu aldrig bli större än vad instrumentens säkringar tål.
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Anslut därefter kuben till däcket -- Om du har ett batteri, se till att det är bortkopplat!
+
+::::{.column-margin}
+:::{.callout-note title="**Strömbegränsning**"}
+På spänningsaggregatet finns det en lysdiod som är märkt med antingen "CC" eller "Current Limited", beroende på modell.
+När denna tänds så är den anslutna kretsen sådan att, *om det vore möjligt* så skulle den dra mer ström än vad kuben är maximalt inställd för.
+
+Detta var vad som hände när du tog en sladd och kopplade ihop plus-polen (anoden) med minus-polen (katoden) för att göra strömbegränsningsinställningen.
+
+Om detta händer har du förmodligen kopplat fel på något sätt och borde titta igenom din krets lite nogrannare.
+:::
+::::
+
+Koppla in ett 100 $\Omega$ **effektmotstånd**.
+Vilken ström visar nätaggregatet?
+
+\vspace{5mm}
+\hfill I = \ansline{3cm}A
+
+Justera sedan upp spänningen.
+Vilken är den maximala spänningen du kan uppnå?
+
+\vspace{5mm}
+\hfill U = \ansline{3cm}V
+
+Vilken ström visar aggregatet nu?
+
+\vspace{5mm}
+\hfill I = \ansline{3cm}A
+
+
+
+
+
+
+
+
+
+\vfill
+
+
+# Uppgift 3 -- Mäta spänning och ström
+
+:::{.column-margin}
+![](img1/image1.png){width=50mm}
+
+
+\vspace{7mm}
+
+![](img1/lysdiod.jpg){width=50mm}
+
+Bilden ovan är en lysdiod. 
+Man ser det bl.a. på att dess ben är olika långa.
+Dess symbol är en triangel med ett streck intill.
+De återkommer senare i kursen.
+
+\vspace{7mm}
+
+![](img1/lampa.jpg){width=50mm}
+
+Detta är den sorts lampa som ska användas i laborationen.
+Dess symbol är en kryssad cirkel.
+
+:::
+
+Koppla upp enligt bilden intill.
+Om inget annat anges i uppgifterna används spänningskuben inställd på 12 V som spänningskälla.
+Använd en skjutströmställare (testa först denna separat med multimetern).
+Stoppa i korta sladdar i däcket där det behövs för att komma åt att mäta.
+
+Sätt alltid in en **röd kabel vid positiv matning** och en **svart kabel till** allt som är anslutet till **jord**.
+
+> [**Slarva aldrig med detta!**]{.underline}
+
+Det är så lätt att förstöra komponenter om man börjar blanda ihop matning och jord på däcket.
+Dessutom får du ingen hjälp av labassistenten om du inte först har kopplat upp så snyggt det går...
+
+Mät spänningen över lampan, strömbrytaren respektive spänningskällan.
+Mätningarna ska ske med både öppen och sluten strömbrytare.
+Så här mäts spänning -- *över* lampan:
+
+![](img1/image2.png){width=90mm}
+
+
+> | 
+> |  $\rightarrow$ *fyll i svar på nästa sida...* $\rightarrow$
+> | 
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+:::{.column-margin}
+\vspace{225mm}
+
+*Labansvarig gör en minnesanteckning här, men du kan labba vidare en stund om det är kö.*
+
+Ok, så långt:
+
+---
+
+:::
+
+::::{.column-margin}
+:::{.callout-tip title="**Symboler i kretsscheman**"}
+
+När man använder ett ord som "strömbrytare" så åsyftas oftast saker som en lampknapp.
+Men i detta fall gör vi det mycket enklare:
+
+Din strömbrytare är en sladd.
+Om du rycker den från ditt kopplingsdäck så är har du *brutit strömmen*.
+:::
+::::
+
+| **Öppen strömbrytare**  \tabto{50mm} **Sluten strömbrytare**
+| (lampan släckt)     \tabto{50mm} (lampan lyser)
+| 
+| \ix{U}{lampa} =          \tabto{25mm}\ansline{20mm}V \tabto{50mm} \ix{U}{lampa}          = \tabto{75mm}\ansline{20mm}V 
+|
+| \ix{U}{strömbrytare} =   \tabto{25mm}\ansline{20mm}V \tabto{50mm} \ix{U}{strömbrytare}   = \tabto{75mm}\ansline{20mm}V 
+|
+| \ix{U}{spänningskälla} = \tabto{25mm}\ansline{20mm}V \tabto{50mm} \ix{U}{spänningskälla} = \tabto{75mm}\ansline{20mm}V 
+|
+
+
+
+
+Mät strömmen [**genom**]{.underline} lampan med strömbrytaren öppen och sluten.
+Så här mäts ström:
+
+![](img1/image3.png){width=90mm}
+
+| **Öppen strömbrytare**  \tabto{50mm} **Sluten strömbrytare**
+|
+| \ix{I}{lampa} = \ansline{20mm}A \tabto{50mm} \ix{I}{lampa} = \ansline{20mm}A
+|
+|
+
+
+:::{.callout-note title="**Mindre än 3 mA?**"}
+Om din multimeter, när inställd på 200 mA, visar runt 2-3 mA så har du förmodligen haft sönder dess säkring.
+Prata med en labbhandledare så hjälper de dig med att byta ut säkringen inuti multimetern.
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 4 -- Vad händer vid serie- och paralell-koppling?
+
+Koppla upp de nedanstående kopplingarna, motstånden ska ha värdet 56$\Omega$.
+Observera lampans ljusstyrka.
+
+:::{.column-page}
+\Begin{multicols}{3}
+
+**Fall 1**
+
+![](img1/image4.png)
+
+\columnbreak
+
+**Fall 2**
+
+![](img1/image5.png)
+
+\columnbreak
+
+**Fall 3**
+
+![](img1/image6.png)
+
+\End{multicols}
+:::
+
+Gradera de tra fallen efter deras ljusstyrka. Från starkast till svagast.[\ansline{\marginparwidth}]{.aside}
+
+
+
+
+
+
+
+
+
+
+
+
+:::{.column-margin}
+![](img1/image7.png){width=30mm}
+:::
+
+# Uppgift 5 -- Den enda lag vi behöver kunna
+
+Koppla upp kretsen på bilden till höger. Motståndet ska ha värdet 1 k$\Omega$.
+
+| Mät spänningen över motståndet.[\ix{U}{R} \tabto{12mm} = \ansline{25mm} V]{.aside}
+|
+| Mät strömmen genom motståndet. [\ix{I}{}  \tabto{12mm} = \ansline{25mm} A]{.aside}
+| 
+| Det finns ett samband mellan ström, spänning och resistans, hur lyder detta? [\ix{R}{}  \tabto{12mm} = ]{.aside}
+| 
+| Använd sambandet ovan för att räkna ut resistansen i kopplingen.[\ix{R}{}  \tabto{12mm} = \ansline{25mm} $\Omega$]{.aside}
+
+:::{.column-margin}
+|
+| \ix{U}{lampa} \tabto{12mm} = \ansline{25mm} V
+|
+| \ix{I}{lampa} \tabto{12mm} = \ansline{25mm} A
+|
+:::
+|
+| Använd sambandet ovan för att räkna ut resistansen i lampan i uppgift 3. Börja med att fylla i de två mätningarna som gjordes.
+|
+| Använd formeln för att räkna ut den resistans lampan hade.[\ix{R}{beräknad}  \tabto{12mm} = \ansline{25mm} $\Omega$]{.aside}
+|
+| Mät lampans resistans med multimetern.[\ix{R}{uppmätt}  \tabto{12mm} = \ansline{25mm} $\Omega$]{.aside}
+
+Fundera lite över varför mätning och beräkning ger så olika resultat. Skriv ned vad du tror.
+
+\vspace{5mm}
+\notes[16pt]{2}{\textwidth}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 6 -- Mäta ström lite smidigare
+
+:::{.column-margin}
+\vspace{228mm}
+Ok, så långt:
+
+---
+
+:::
+
+:::{.column-margin}
+![](img1/image3.png){width=45mm}
+:::
+Vi såg att man för att mäta ström måste låta strömmen gå genom instrumentet. Det innebär att vi måste bryta kretsen och koppla om instrumentet för strömmätning. Detta kan vara svårt om vi snabbt vill växla mellan att mäta ström genom och spänning över t.ex. en motor i drift.
+
+Ett alternativ kan då vara att koppla in ett känt och litet motstånd i serie med kretsen.
+Så länge motståndet är så litet att effekten på kretsen blir försumbar kan det få sitta där så länge vi behöver mäta.
+Vi kan nu istället mäta spänningen över motståndet och beräkna strömmen genom kretsen.
+
+Koppla in en liten resistans, t ex 1 $\Omega$, i serie med kretsen och mät spänningen över denna.
+
+![](img1/image4.png){width=45mm}
+
+
+> | \ix{U}{lampa}    = \tabto{20mm}\ansline{20mm}V 
+> |
+> | \ix{I}{beräknad} = \tabto{20mm}\ansline{20mm}A 
+
+Det är på detta sätt multimetern mäter ström, d.v.s. den har ett internt motstånd som den mäter spänning över, men resistansen är väldigt liten.
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+# Uppgift 7 -- Räkna på seriekoppling
+
+:::{.column-margin}
+![](img1/image5.png){width=45mm}
+:::
+Studera denna koppling. 
+I första beräkningen ska motstånden ha värdena R1 = 1 k$\Omega$ och R2 = 1 k$\Omega$.
+I andra beräkningen ska motstånden ha värdena R1 = 1 k$\Omega$ och R2 = 560 $\Omega$.
+
+
+## R1 = R2 = 1 k$\Omega$
+
+Beräkna spänningen över motstånden (R1 = R2 = 1 k$\Omega$).
+Mät också och kontrollera dina svar.
+
+
+| **Beräknade värden**                           \tabto{50mm} **Uppmätta värden**
+| 
+| \ix{U}{R1} =   \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R1} = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{U}{R2} =   \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R2} = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{I}{} =     \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{}   = \tabto{62mm}\ansline{20mm} A
+|
+
+
+## Olika R1 och R2
+
+R1 = 1 k$\Omega$ och R2 = 560 $\Omega$.
+
+
+| **Beräknade värden**                           \tabto{50mm} **Uppmätta värden**
+| 
+| \ix{U}{R1} =   \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R1} = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{U}{R2} =   \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R2} = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{I}{} =     \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{}   = \tabto{62mm}\ansline{20mm} A
+|
+
+Försök hitta ett motstånd som ger ungefär samma ström i kretsen.
+
+|
+| \ix{R}{} = \tabto{12mm}\ansline{20mm} $\Omega$ (valt motstånd)
+| 
+| \ix{I}{} = \tabto{12mm}\ansline{20mm} A (uppmätt)
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 8 -- Räkna på parallellkoppling
+
+:::{.column-margin}
+\vspace{228mm}
+Ok, så långt:
+
+---
+
+:::
+
+:::{.column-margin}
+![](img1/image6.png){width=45mm}
+:::
+Studera denna koppling. 
+I första beräkningen ska motstånden ha värdena R1 = 1 k$\Omega$ och R2 = 1 k$\Omega$.
+I andra beräkningen ska motstånden ha värdena R1 = 1 k$\Omega$ och R2 = 560 $\Omega$.
+
+
+## R1 = R2 = 1 k$\Omega$
+
+Beräkna spänningen över motstånden (R1 = R2 = 1 k$\Omega$).
+Mät också och kontrollera dina svar.
+
+
+| **Beräknade värden**                           \tabto{50mm} **Uppmätta värden**
+| 
+| \ix{U}{R1}    = \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R1}    = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{U}{R2}    = \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R2}    = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{I}{R1}    = \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{R1}    = \tabto{62mm}\ansline{20mm} A
+|
+| \ix{I}{R2}    = \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{R2}    = \tabto{62mm}\ansline{20mm} A
+|
+| \ix{I}{total} = \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{total} = \tabto{62mm}\ansline{20mm} A
+|
+
+
+## Olika R1 och R2
+
+R1 = 1 k$\Omega$ och R2 = 560 $\Omega$.
+
+| **Beräknade värden**                           \tabto{50mm} **Uppmätta värden**
+| 
+| \ix{U}{R1}    = \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R1}    = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{U}{R2}    = \tabto{12mm}\ansline{20mm} V \tabto{50mm} \ix{U}{R2}    = \tabto{62mm}\ansline{20mm} V 
+|
+| \ix{I}{R1}    = \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{R1}    = \tabto{62mm}\ansline{20mm} A
+|
+| \ix{I}{R2}    = \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{R2}    = \tabto{62mm}\ansline{20mm} A
+|
+| \ix{I}{total} = \tabto{12mm}\ansline{20mm} A \tabto{50mm} \ix{I}{total} = \tabto{62mm}\ansline{20mm} A
+|
+
+Försök hitta ett motstånd som ger ungefär samma ström i kretsen.
+
+| \ix{R}{}    = \tabto{12mm}\ansline{20mm} $\Omega$ (valt motstånd)
+| 
+| \ix{I}{total} = \tabto{12mm}\ansline{20mm} A (uppmätt)
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 9 -- Effekt
+
+:::{.column-margin}
+\vspace{228mm}
+Lab OK:
+
+---
+
+:::
+
+:::{.column-margin}
+![](img1/image5.png){width=45mm}
+:::
+Vi ska i denna uppgift känna lite på begreppet effekt och försöka se hur denna fördelar sig på seriekopplade resistorer.
+Till detta behöver du två effektmotstånd (minst 3 W) med resistanserna
+100 $\Omega$ och 270 $\Omega$.
+
+Anslut de två resistanserna i serie.
+
+> R1 = 100 $\Omega$, R2 = 270 $\Omega$ (Effektmotstånd)
+
+Vilket av motstånden tror du blir varmast?
+Lita på din intuition och ringa in svaret nedan.
+
+
+> **R1** \tabto{20mm} **R2**
+
+Justera spänningen till 20 V och känn på dem efter en stund.
+(Om du känner försiktigt kan du öka till 25 V, det bör bli tydligare men sker på egen risk.)
+
+
+Stämmer intuitionen med fingertoppskänslan?[\ansline{\marginparwidth}]{.aside}
+
+
+Beräkna effekten som utvecklas i respektive motstånd.
+Redovisa beräkning och resultat nedan.
+Lämna också tillbaka de komponenter du fick till dagens laboration.
+Var [**extra noga**]{.underline} med att lampan kommer tillbaka.
+
+
+\vfill
+
+
+
+|
+| \ix{P}{R1} = \tabto{12mm}\ansline{20mm} W
+| 
+| \ix{P}{R2} = \tabto{12mm}\ansline{20mm} W
+|
+
+*Lämna inte salen innan resultatet har blivit bokfört i Canvas.
+Redovisar ni via Zoom, så ansvarar ni för att boka och genomföra redovisning med någon av assistenterna.*
+

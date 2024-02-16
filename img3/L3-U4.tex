@@ -1,0 +1,41 @@
+
+\begin{circuitikz}[scale=1.0]
+  \tikzset{
+    mux 8by3 wl/.style={muxdemux, muxdemux def={Lh=10, NL=10, Rh=3, NB=5, w=4},
+    draw only left pins={2-9},
+    draw only bottom pins={2-4},
+    muxdemux label={
+      B2=\ix{A}{1},
+      B3=\ix{A}{2},
+      B4=\ix{A}{4},
+      L2=0,
+      L3=1,
+      L4=2,
+      L5=3,
+      L6=4,
+      L7=5,
+      L8=6,
+      L9=7,
+    },   
+    circuitikz/muxdemux/inner label ysep=4pt}
+  }
+  \node
+    [mux 8by3 wl](M){}
+  ;
+  \draw
+    (M.bpin 2) -- ++ (0,-0.5) coordinate (A) node[below]{C}
+    (M.bpin 3) -- (M.bpin 3 |- A) node[below]{B}
+    (M.bpin 4) -- (M.bpin 4 |- A) node[below]{A}
+    
+    (M.lpin 2) -- ++(-0.5,0) node[left]{1}
+    (M.lpin 3) -- ++(-0.5,0) node[left]{1}
+    (M.lpin 4) -- ++(-0.5,0) node[left]{0}
+    (M.lpin 5) -- ++(-0.5,0) node[left]{1}
+    (M.lpin 6) -- ++(-0.5,0) node[left]{0}
+    (M.lpin 7) -- ++(-0.5,0) node[left]{1}
+    (M.lpin 8) -- ++(-0.5,0) node[left]{0}
+    (M.lpin 9) -- ++(-0.5,0) node[left]{1}
+
+    (M.rpin 1) -- ++(0.5,0) node[right]{X}
+  ;
+\end{circuitikz}

@@ -1,0 +1,36 @@
+\begin{circuitikz}[scale=1.2]
+  \ctikzset{
+    logic ports=european,
+    tripoles/european not symbol=ieee circle,
+    logic ports/scale=1.0,
+    multipoles/flipflop/clock wedge size=0.25,
+  }
+  \draw
+    (6,1)                 node[european nand port] (NAND1){} 
+    ($(NAND1) + (0,-2)$)  node[european nand port] (NAND2){}
+    (NAND1.in 1) node[anchor=south] {\inv{S}}
+    (NAND2.in 2) node[anchor=north] {\inv{R}}
+    (NAND1.out) to[short,*-] ++ (0.5,0) node[right]{Q}
+    (NAND2.out) to[short,*-] ++ (0.5,0) node[right]{\inv{Q}}
+    % Make lines stick out from NC and ND, give aliases
+    (NAND1.in 2) -- ++(0,-0.5) -- ($(NAND2.out)+(0,+0.5)$) -- (NAND2.out)
+    (NAND2.in 1) -- ++(0, 0.5) -- ($(NAND1.out)+(0,-0.5)$) -- (NAND1.out)
+  ;
+  \draw
+    (NAND1.bin 1) to[short] ++(-1,0) coordinate[] (Y1)
+    (NAND2.bin 2) to[short] ++(-1,0) coordinate[] (Y2)
+  ;
+  \draw
+    (0,0) -- ++(0,-.2) node[ground](GND){}
+    (0,0) -- ++(.5,0)  node[spdt, anchor=in](SW){}
+  ;
+  \draw
+    (SW.out 1) -- ++(0,+.2) coordinate[] (X1) to[R,  a=10<\kilo\ohm>] ++ (0,+1.5) node[above] {5V}
+    (SW.out 2) -- ++(0,-.2) coordinate[] (X2) to[R,  l=10<\kilo\ohm>] ++ (0,-1.5) node[below] {5V}
+  ;
+  \draw
+    (X1) to[short,*-]++(1,0) -- (Y1)
+    (X2) to[short,*-]++(1,0) -- (Y2)
+  ;
+\end{circuitikz}
+

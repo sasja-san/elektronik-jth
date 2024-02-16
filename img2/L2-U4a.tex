@@ -1,0 +1,25 @@
+
+
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=european,
+    tripoles/european not symbol=ieee circle,
+    logic ports/scale=1.5,
+    multipoles/flipflop/clock wedge size=0.25,
+  }
+  \tikzset{flipflop myJK/.style={flipflop,
+  flipflop def={c2=1, n2=1, nu=1, nd=1}}}
+  \draw 
+  (0,0) node[flipflop myJK](JK) {}
+  (JK.bpin 1) to[] (JK.pin 1) node[left]{J}
+  (JK.bpin 3) to[] (JK.pin 3) node[left]{K}
+  (JK.bpin 6) to[] (JK.pin 6) node[right]{     Q }
+  (JK.bpin 4) to[] (JK.pin 4) node[right]{\inv{Q}}
+  (JK.up)    to[short] ++ (0,+0.25) node[above]{SET}
+  (JK.down)  to[short] ++ (0,-0.25) node[below]{CLR}
+
+  (JK.pin 2) to[short] ++ (-0.25,0) node[left]{CP}
+  ;
+\end{circuitikz}
+
+

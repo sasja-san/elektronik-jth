@@ -1,0 +1,216 @@
+---
+title: "Laboration 5 (frivillig)"
+subtitle: "Transistorer"
+---
+
+\maketitle
+
+
+## Syfte
+
+Att förstå mer om transistorer.
+
+## Utrustning:
+
+  * Transistorer BC547B, BC557B
+  * Lampa 12 V, 40 mA
+  * Resistorer efter behov, finns i era lådor och i labsalen
+
+## Redovisning: 
+
+Ingen -- Denna laboration är frivillig.
+
+
+
+
+
+
+
+\vspace{10cm}
+
+# Uppgift 1 -- Läsning av datablad
+
+Studera databladen för transistorerna BC547B och BC557B.
+Se till att du får tag i ett datablad som visar kurvor för bl.a. \ix{I}{C} som funktion av \ix{U}{CE}.
+Ta reda på vilket hFE transistorn har.
+Kontrollmät din transistor.
+
+  1. Vilket \ix{U}{CEsat} har din transistor?[\ansline{4cm}]{.aside}
+
+  2. Vad är skillnaden mellan de två transistorerna -- BC547B och BC557B?[\notes[16pt]{3}{\marginparwidth}]{.aside}
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+# Uppgift 2 -- En vanlig tentauppgift
+
+:::{.column-margin}
+![](img5/image1.png){width=70mm}
+:::
+
+
+Beräkna mellan vilka värden \ix{R}{B} måste ligga för att kretsen nedan ska fungera om
+strömmen genom \ix{R}{C} måste vara minst 10mA, \ix{U}{in} = 3V, och \ix{I}{B} < 4mA.
+Förstärkningsfaktorn för transistorn är 200. 
+
+| \ix{U}{BE} = 0.7V
+| 
+| \ix{U}{CEsat} = 0.2V 
+| 
+| \ix{V}{CC} = 5 V
+| 
+
+\vfill
+
+Du får ett ganska stort spann för \ix{R}{B} eftersom \ix{I}{C} inte ska vara särskilt stor (bara kunna driva en lysdiod).
+
+Välj RC så att strömmen inte kan överstiga den önskade för mycket.
+Vad skulle \ix{R}{B} bli om du i stället skulle ha \ix{I}{C} >500mA och driva en motor?
+
+Klarar din transistor det?
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 3 -- Koppla upp kretsen och testa dina beräkningar
+
+Koppla upp kretsen du gjort beräkningar på.
+Välj ett relativt stort värde på \ix{R}{B}.
+
+
+::::{.column-margin}
+\vspace{9mm}
+:::{.callout-tip title="**Lite ledning till storleksordning att ändra \ix{R}{B} med**"}
+I dina beräkningar har du använt \ix{h}{FE} = 200, vilket gör att ditt beräknade värde garanterat gör att transistorn leder för fullt (bottnar).
+
+Därför kan det vara så att du måste öka \ix{R}{B} ganska mycket över det värde du beräknat innan du ser resultatet.
+
+Prova med ett \ix{R}{B} som är ungefär dubbelt så stort som det \ix{R}{B} du beräknat.
+:::
+::::
+
+Mät \ix{I}{C} genom att mäta spänningen över \ix{R}{C} och beräkna strömmen.
+Stämmer dina beräkningar?
+
+Mät även \ix{I}{B} genom att mäta spänningen över \ix{R}{B} och beräkna strömmen.
+Om du gjort dina beräkningar rätt bör nu \ix{U}{CE} vara samma som du kan läsa av i databladet.
+Detta gäller så länge 
+
+> \ix{I}{C} < \ix{h}{FE} $\cdot$ \ix{I}{B} 
+
+Prova med att byta \ix{R}{B}. Om du överstiger det värde du beräknat kommer \ix{U}{CE} inte längre att vara \ix{U}{CEsat} och transistorn kommer att börja jobba som förstärkare i stället för switch.
+Om du däremot minskar \ix{R}{B} kommer du inte att se någon skillnad på \ix{I}{C}. (Transistorn fortsätter att bottna)
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 4 -- Förstå kurvorna med \ix{I}{C} och \ix{U}{CE} 
+
+:::{.column-margin}
+![](img5/image2.png){width=70mm}
+På engelska heter detta "load line".
+Anglikanerna har dock inget så lyxigt som vårat fina svenska *Tvåpolsteorem*.
+:::
+
+I databladet finns en figur som liknar den intill, där strömmen \ix{I}{C} är inritad som funktion av \ix{U}{CE}.
+För varje horisontell linje i diagrammet är strömmens värde beroende av \ix{I}{B}.
+
+Eftersom vi kommer att arbeta med betydligt lägre strömmar, finns ett anpassat diagram i
+appendix.
+
+Vilken förstärkning har de räknat med när de ritade upp diagrammet? (ledning: \ix{h}{FE}=\ix{I}{C}/\ix{I}{B} )
+
+Rita därefter in din ekvivalenta tvåpol för kollektorkretsen, d.v.s. räta linjen som satisfierar
+
+> E - \ix{R}{C} $\cdot$ \ix{I}{C} - \ix{U}{CE} = 0
+
+Det man nu kan läsa ut i figuren är: 
+För vilka värden på \ix{I}{B} kommer din transistor att leda för fullt, dvs \ix{U}{CE} understiga 0.2V?
+
+Jämför dina värden på \ix{I}{B}.
+
+:::{.column-margin}
+\vspace*{15mm}
+| Diagrammet är för BC547B. Y-axeln visar \ix{I}{C}.
+| Översta linjen (rosa) är för \ix{I}{B} = 50 µA.
+| Näst nedersta linjen (mörkblå) är för \ix{I}{B} = 20 µA.
+| Nedersta linjen (grön) är för \ix{I}{B} = 10 µA.
+:::
+
+\vfill
+
+
+:::{.column-page}
+![](img5/image4.png)
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 5 -- Mätningar på PNP-transistorn
+
+
+
+Vi har i kursen räknat mest på NPN-transistorn.
+Motsvarande beräkningar och mätningar går förstås också att göra på PNP-transistorn.
+I figuren nedan ser du hur man kan koppla in en PNP-transistor.
+Som du ser är emittern upptill i figuren.
+
+![](img5/image3.png){width=97mm}
+
+Transistorn leder om den får negativ spänning mellan bas och emitter, d.v.s. om A har lägre spänning än 12 V.
+Och lampan sitter kopplad till kollektorn.
+\ix{U}{CE} är alltså också negativ, för strömmen går från kollektorn mot jord.
+Beräkningarna görs i övrigt på samma sätt som för NPN-transistorer.
+
+
+  a) För vilka spänningar mellan punkten A och jord kommer lampan att lysa fullt?[Svar: \ansline{20mm} -- \ansline{20mm} V]{.aside}
+
+
+  b) Vi önskar att kunna styra lampan med utgången från en logikkrets.
+      Denna ansluts vid punkten B i schemat ovan.
+      Komplettera schemat med en lämplig transistorkoppling så att lampan är tänd vid 5 V på B och släckt vid 0 V på B.  
+      Logikkretsens drivförmåga är begränsad, så det får inte gå mer än 10 mA genom punkten B.
+      Eventuella transistorer (valfri typ) anses ha förstärkningen 300 ggr.  
+
+
+När du tror dig ha en lösning på (b):
+
+Koppla upp kretsen med båda transistorerna och prova med 12V-lamporna du använde i din första labb i kursen.
+
+

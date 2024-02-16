@@ -1,0 +1,16 @@
+
+\begin{circuitikz}[scale=1.2]
+  \ctikzset{tripoles/european not symbol=ieee circle}
+  \draw
+    (0,0)                 node[european nor port] (NOR1){} 
+    ($(NOR1) + (0,-2)$)  node[european nor port] (NOR2){}
+    (NOR1.in 1) node[anchor=east] {S}
+    (NOR2.in 2) node[anchor=east] {R}
+    (NOR1.out) to[short,*-] ++ (0.5,0) node[right]{\inv{Q}}
+    (NOR2.out) to[short,*-] ++ (0.5,0) node[right]{     Q }
+    % Make lines stick out from NC and ND, give aliases
+    (NOR1.in 2) -- ++(0,-0.5) -- ($(NOR2.out)+(0,+0.5)$) -- (NOR2.out)
+    (NOR2.in 1) -- ++(0, 0.5) -- ($(NOR1.out)+(0,-0.5)$) -- (NOR1.out)
+  ;
+\end{circuitikz}
+
