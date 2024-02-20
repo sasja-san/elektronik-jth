@@ -48,7 +48,7 @@ format:
 
       monofont: "SourceCodePro"
       monofontoptions:
-        - Path=.quarto/ttf/
+        - Path=.ttf/
         - Extension=.ttf
         - UprightFont=*-Medium
         - BoldFont=*-Bold
@@ -57,7 +57,7 @@ format:
 
       sansfont: "cabin"
       sansfontoptions:
-        - Path=.quarto/ttf/
+        - Path=.ttf/
         - Extension=.ttf
         - UprightFont=*.medium
         - BoldFont=*.bold

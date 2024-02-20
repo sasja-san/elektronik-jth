@@ -581,6 +581,11 @@ Läs nu igenom faktarutan på nästa sida och fundera på vad man skulle kunna a
 
 :::{.column-margin}
 ![](img6/Smitt_hysteresis_graph.pdf){width=70mm}
+
+
+Här är en till bild som illustrerar samma sak:
+
+![](img6/hysteresis.png){width=70mm}
 :::
 
 :::{.callout-note title="**Faktaruta, Schmittrigger**"}
