@@ -580,7 +580,7 @@ Läs nu igenom faktarutan på nästa sida och fundera på vad man skulle kunna a
 
 
 :::{.column-margin}
-![](img6/Smitt_hysteresis_graph.svg){width=70mm}
+![](img6/Smitt_hysteresis_graph.pdf){width=70mm}
 :::
 
 :::{.callout-note title="**Faktaruta, Schmittrigger**"}
@@ -848,14 +848,14 @@ Till höger är en ensam 50$\Omega$-terminator.
 Till väster är en BNC-förgrenare med en sladd ansluten i ena änden och en terminator i andra.
 :::
 
-Först låt oss se det ideala sättet att överföra en signal på.
+Låt oss se det ideala sättet att överföra en signal på:
 
   {{< include img6/appendix-b.tex >}}
 
 Ovanför kan man se hur signalgeneratorn (SG) "antar" att din krets är konstruerad.
 Den vänsta delen är SG och den högra sidan är signalens "mottagare".
 
-När du ställer in amplituden på en HP33120A så att den ska ha t.ex. "600mVPP" så görs den inställningen så att dessa 600mV ska vara spänningsfallet över SG:ns interna motstånd blir 600mV och så att signalens mottagare ska få 600mV över sig.
+När du ställer in amplituden på en HP33120A så att den ska ha t.ex. "600mVPP" så görs den inställningen så att dessa 600mV ska vara spänningsfallet över SG:ns interna motstånd blir 600mV *och* så att signalens mottagare ska få 600mV över sig.
 \ix{V}{sig} (från ritningen) i detta fall blir alltså 1200mV.
 
 
@@ -894,7 +894,7 @@ Om du kopplat din krets så här så är detta varför (trots att prob-dämpning
   {{< include img6/appendix-c.tex >}}
 
 
-En bra *heuristik*[En heuristik är en användbar approximation. Den brukar inte vara 100% sann, men för någon som är ny till ett ämne så kan den vara till mycket stor nytta. Du har kanske fått använda "elektronskal" som en heuristik när du studerat kemi?]{.aside} är att
+En bra *heuristik*[En heuristik (uttalas "hävvrest**i**k") är en användbar approximation. Den brukar inte vara 100% sann, men för någon som är ny till ett ämne så kan den vara till mycket stor nytta. Du har kanske fått använda "elektronskal" som en heuristik när du studerat kemi?]{.aside} är att
 
 > Ett motstånd R1 parallellt med ett väldigt, väldigt stort motstånd R2 blir detsamma som R1.
 > Detta kan formuleras som $\textnormal{R1} \parallelsum \infty \textnormal{ = R1}$.

@@ -612,7 +612,8 @@ Stämmer intuitionen med fingertoppskänslan?[\ansline{\marginparwidth}]{.aside}
 Beräkna effekten som utvecklas i respektive motstånd.
 Redovisa beräkning och resultat nedan.
 Lämna också tillbaka de komponenter du fick till dagens laboration.
-Var [**extra noga**]{.underline} med att lampan kommer tillbaka.
+
+> Var [**extra noggrann**]{.underline} med att lampan kommer tillbaka till komponentlådan!
 
 
 \vfill

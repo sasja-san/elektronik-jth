@@ -43,8 +43,18 @@ format:
         # 97.0 + 7.7 + 70.3 = 175mm
       number-sections: false
       colorlinks: false
+
       mainfont: ETbb
-      monofont: "Source Code Pro"
+
+      monofont: "SourceCodePro"
+      monofontoptions:
+        - Path=.quarto/ttf/
+        - Extension=.ttf
+        - UprightFont=*-Medium
+        - BoldFont=*-Bold
+        - ItalicFont=*-MediumItalic
+        - BoldItalicFont=*-BoldItalic
+
       sansfont: "cabin"
       sansfontoptions:
         - Path=.quarto/ttf/
