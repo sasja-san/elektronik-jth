@@ -391,13 +391,16 @@ Det som du hittils kallat för +5V har egentligen varit
 
 > *+5V i relation till en referenspunkt som kallats för jord*
 
-Om du kastat om svart/röd pol på din multimeter när du mätt så har du kanske sett att det stått -5V istället.
+Denna referenspunkt anluts t.ex. till `COM` på din multimeter.
+Din multimeter visar alltså inte "Hur många volt ligger på röd prob?".
+Den visar istället "Hur många volts skillnad är det mellan röd prob och `COM`?".
+Därför kan du se -5V på multimetern om du mäter "bakvänt".
 
-| På samma sätt som du kan sätta två st. 1.5V-batterier i serie och få ut +3.0V så kan du koppla två spänningsaggregat i serie.
-| 
-| När du kopplar ihop ena sidans + med andra sidans -, ansätt då att du *just där, i den ledaren* har din jord.
 |
-| Använd nu din multimeter för att kontrollera spänningsskillnaderna mellan de två aggregatens utgångar.
+| På samma sätt som du kan sätta två st. 1.5V-batterier i serie och få ut +3.0V så kan du koppla två spänningsaggregat i serie.
+| När du kopplar ihop ena aggregatets + med andra sidans -, ansätt då att du *just där, i den ledaren* har din jord.
+|
+| Använd din multimeter för att kontrollera spänningsskillnaderna mellan de två aggregatens utgångar.
 :::
 ::::
 
@@ -410,7 +413,7 @@ Om du kastat om svart/röd pol på din multimeter när du mätt så har du kansk
   #. Använd sinusvåg, ca 100mV, 500Hz
 
 :::{.column-margin}
-\vspace{4cm}
+\vspace{45mm}
 ![](img6/image7.png){width=70mm}
 :::
 
@@ -919,6 +922,8 @@ Utöver R = 50$\Omega$ för signalöverföring brukar även 75$\Omega$ och 600$\
 
 
 75$\Omega$ används i många kommunikationssystem. T.ex. så ska *ethernet* (i vardagsspråk "nätverkskabel" -- ett av de att fysiskt sätten att överföra nätverkskommunikation på) termineras över ett motstånd på 75$\Omega$.
+
+75$\Omega$ används i många kommunikationssystem. T.ex. så ska *Ethernet* (i vardagsspråk "nätverkskabel") termineras över ett motstånd på 75$\Omega$.
 :::
 ::::
 
