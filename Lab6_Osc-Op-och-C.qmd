@@ -921,8 +921,6 @@ Utöver R = 50$\Omega$ för signalöverföring brukar även 75$\Omega$ och 600$\
 600$\Omega$ brukar användas som standard för ljudsystem och även i olika professionella telekommunikationssystem.\strut
 
 
-75$\Omega$ används i många kommunikationssystem. T.ex. så ska *ethernet* (i vardagsspråk "nätverkskabel" -- ett av de att fysiskt sätten att överföra nätverkskommunikation på) termineras över ett motstånd på 75$\Omega$.
-
 75$\Omega$ används i många kommunikationssystem. T.ex. så ska *Ethernet* (i vardagsspråk "nätverkskabel") termineras över ett motstånd på 75$\Omega$.
 :::
 ::::
