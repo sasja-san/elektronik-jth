@@ -1,0 +1,212 @@
+---
+title: "Laboration 7"
+subtitle: "Spänningsreglering"
+---
+
+\maketitle
+
+## Syfte
+
+Att välja spänningsregulator är viktigt.
+Hur påverkar valet parametrar som pris, ingångsspänning, verkningsgrad?
+Även beräkningar på batterier kommer att göras.
+
+
+## Utrustning
+
+Komponenter du behöver låna under laborationen:
+  * 1 st linjär spänningsregulator LD1117AV33
+  * 1 st DC/DC-omvandlare NCS1S2403SC
+  * 2 st kondensatorer, 100 nF, 10 μF
+  * 1 st effektmotstånd 18 Ohm
+
+Du behöver kopplingsdäck och multimeter. Det underlättar om du har två multimetrar (din och labkamratens).
+
+
+## Genomförande
+
+Studera databladen för regulatorerna LD1117AV33 och NCS1S2403SC.
+Undersök vilken max-ström du kan ta ut från de respektive kretsarna.
+Titta även på priset.
+Du ska nu göra mätningar av in- och uteffekt, och undersöka hur verkningsgraden hos de två spänningsregulatorerna varierar med uttagen effekt och inspänningarnas nivå.
+
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 1 -- Linjära spänningsregulatorer
+
+Undersök i databladet hur du kopplar in kretsen LD1117AV33.
+
+::::::{.column-margin}
+:::{.callout-warning title="**OBS!**"}
+Motståndet kommer att bli varmt.
+Regulatorn också!
+:::
+::::::
+
+Till "In" ska du koppla spänningsaggregatet på labb-bänken.
+Du ska variera inspänningen från 3V till 12V och fylla i tabellen nedan. Mät både ström och spänning genom att läsa av spänningsaggregatets egna volt- och amperemetrar.
+
+Till ”Ut” ska du koppla in ett 18 Ohms trådlindat motstånd.
+
+\vspace{5mm}
+
+| Vilken ström som kommer att gå 
+| igenom motståndet? (beräkna) \ansline{35mm}
+
+\vspace{5mm}
+
+::::::{.column-margin}
+:::{.callout-warning title="**OBS!**"}
+Du får för dålig upplösning på 10A-området på multimetern och du bör använda 200mA-området.
+Kom ihåg att multimeterns säkring går sönder om du försöker mäta strömmar som är större än 400mA.
+Se till att inte koppla in för låg resistans som last, inte lägre än 18$\Omega$ vid 3.3V spänning.
+
+Och koppla multimetern i serie med motståndet!!
+:::
+::::::
+
+![](img7/image1.png)
+
+Mät strömmen på utgången genom att koppla in din multimeter i serie med 18$\Omega$-motståndet (Vilken max-ström klarar instrumentet?)
+Och mät spänningen med labkamratens voltmeter (kopplad parallellt med motståndet).
+
+
+\vspace{5mm}
+
+\begin{TAB}(c,20mm,20mm)[5pt]{|r|c|c|c|c|c|c|}{|c|c|c|c|c|c|c|c|c|c|c|}
+  \normalsize{\ix{V}{in}} & \normalsize{\ix{I}{in}} & \normalsize{\ix{P}{in}} & \normalsize{\ix{V}{ut}} & \normalsize{\ix{I}{ut}} & \normalsize{\ix{P}{ut}} & \normalsize{$\eta$} \\
+  \normalsize{ 3 V} & & & & & & \\
+  \normalsize{ 4 V} & & & & & & \\
+  \normalsize{ 5 V} & & & & & & \\
+  \normalsize{ 6 V} & & & & & & \\
+  \normalsize{ 7 V} & & & & & & \\
+  \normalsize{ 8 V} & & & & & & \\
+  \normalsize{ 9 V} & & & & & & \\
+  \normalsize{10 V} & & & & & & \\
+  \normalsize{11 V} & & & & & & \\
+  \normalsize{12 V} & & & & & & \\
+\end{TAB}
+
+
+[\notes{4}{\marginparwidth}]{.aside}För vilka spänningar på ingången kommer kretsen fungera? Andra funderingar?
+
+Vilken verkningsgrad skulle man få vid 30V matning (om komponenten klarat det)?
+Räkna, men prova inte!
+
+\vfill
+
+:::{.callout-warning title="**OBS!**"}
+Vänta med att koppla ner kretsen tills motståndet kallnat!!!!!
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+# Uppgift 2 -- Switchande spänningsregulatorer
+
+Öppna databladet för NCS1S2403SC från Murata.
+
+>
+> Är regulatorn en 12V eller 24V-modell?[\ansline{35mm}]{.aside}
+>
+> Vilken är regulatorns nominella utspänning?[\ansline{35mm}]{.aside}
+>
+> Vilka \ix{V}{in} är komponenten gjord för?[\ansline{35mm}]{.aside}
+> 
+
+
+Koppla nu upp motsvarande krets med NCS1S2403SC.
+Till skillnad från LD1117AV33 så har denna regulator två katoder (negativa poler).
+Koppla *inte* ihop dessa.
+
+Använd samma motstånd som tidigare (18$\Omega$) och fyll i tabellen nedan.
+
+\begin{TAB}(c,20mm,20mm)[5pt]{|r|c|c|c|c|c|c|}{|c|c|c|c|c|c|c|c|c|c|c|}
+  \normalsize{\ix{V}{in}} & \normalsize{\ix{I}{in}} & \normalsize{\ix{P}{in}} & \normalsize{\ix{V}{ut}} & \normalsize{\ix{I}{ut}} & \normalsize{\ix{P}{ut}} & \normalsize{$\eta$} \\
+  \normalsize{ 7 V} & & & & & & \\
+  \normalsize{ 8 V} & & & & & & \\
+  \normalsize{ 9 V} & & & & & & \\
+  \normalsize{10 V} & & & & & & \\
+  \normalsize{11 V} & & & & & & \\
+  \normalsize{12 V} & & & & & & \\
+  \normalsize{15 V} & & & & & & \\
+  \normalsize{20 V} & & & & & & \\
+  \normalsize{25 V} & & & & & & \\
+  \normalsize{30 V} & & & & & & \\
+\end{TAB}
+
+:::{.callout-warning title="**OBS!**"}
+Vänta med att koppla ner kretsen tills motståndet kallnat!!!!!
+:::
+
+{{< pagebreak >}}
+
+
+
+
+
+
+
+
+
+
+
+# Uppgift 3 -- Beräkningar på strömförbrukning i ett batteri
+
+:::{.column-margin}
+![](img7/image2.png)
+:::
+I en batteridriven produkt har du ett icke laddningsbart litiumbatteri, märkt som det i bilden.
+
+
+Detta batteripack skall mata en produkt som kommunicerar med en server via 4G mobilkommunikation, WLAN till en smartphone samt resterande del av processorplattformen.
+
+4G modulen skall matas med 3.8V och kan dra upp till 1A kortvarigt, WLAN-modulen skall matas med 3.3V och kan dra upp till 250mA, och processordomänen skall matas med 1.8V och kan dra 300mA.
+
+För att gå ner från 7.2 V till en lägre spänning så används antingen ideala regulatorer ($\eta$ = 1.0), eller en icke-ideala regulatorer (linjära eller switchande).
+
+Besvara följande frågor:
+
+:::{.column-margin}
+Antag för ugvppgift a) och b) att alla komponenter är inkopplade med *ideala* regulatorer.
+Det är alltså inga effektförluster att räkna med.
+:::
+
+  a) Systemet kommer större delen av sin livstid befinna sig i ett "sleep"-läge, där 4G och WLAN är helt avslagna, men processordomänen är aktiv men i ett strömreducerat tillstånd (alla moderna processorer kan detta).
+    Kunden kräver att batteriet skall hålla i minst 5 år i detta strömreducerade tillstånd.
+    Om du antar att produkten **alltid** är i sleep -- hur mycket ström får den då dra som mest?
+
+  b) Om processorn är fullt "aktiv", d.v.s. ej i sleep, men 4G och WLAN är avstängda – hur länge bör batteriet hålla om du gör rätt avseende strömförsörjningsdesignen?
+
+:::{.column-margin}
+Mätningarna du gjorde var för LD1117AV33 men här ska du räkna på en LD1117AV18.
+Det är alltså en regulator som ger 1.8V och inte 3.3V. 
+Eftersom dina mätningar gjordes för en annan typ, använd då ett uppmätt $\eta$ som är för samma spänningsfall över regulatorn.
+Detta är ett inte helt orimligt antagande.
+:::
+
+  c) Om du skulle basera implementeringen på en linjär spänningsregulator i stil med LD1117AV33 – ung. hur många driftstimmar kommer man kunna förvänta sig?
+    (jmf. med siffran du får från b ovan)
+
+  d) Om du antar att processorn alltid är i sleep och då drar 0.1mA, bortsett från en gång per dygn, där processor, WLAN och 4G är aktiva i 5 minuter (och då drar angiven ström) -- hur länge kommer produkten fungera innan batteribyte?
+
+
