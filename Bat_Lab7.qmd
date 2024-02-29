@@ -12,20 +12,26 @@ format:
       # Change page dimensions to fit all
       geometry: 
         # - showframe
-        - left=1.0cm
-        - right=1.0cm
-        - top=2.0cm
-        - bottom=0.5cm
+        - left=10mm
+        - right=10mm
+        - top=7mm
+        - bottom=7mm
       include-in-header:
         - text: |
             \setlength{\columnsep}{1mm}
             \pagenumbering{gobble}
+            \usepackage{tikz}
+            \usetikzlibrary{arrows,shapes}
+            \usepackage{.quarto/coffeestains}
 ---
 
 <!---
 Bygg detta dokument med
 $ quarto render bat.qmd --to pdf
 -->
+\coffeestainA{0.55}{0.85}{-25}{50mm}{13mm}
+
+\coffeestainD{0.25}{0.5}{90}{-45mm}{-115mm}
 
 \Begin{multicols}{3}
 
@@ -210,7 +216,6 @@ $P_{snitt} = \frac{5165 \cdot 5 + 0.18 \cdot 1435}{1440}$
 
 $P_{snitt} = 18.11mW$
 
-<!-- 
 > Med $E_{bat} = 93.6Wh$ och $\eta = 0.8$ så får vi att
 
 $t = \frac{E_{bat}}{P_{snitt}} \cdot \eta$
