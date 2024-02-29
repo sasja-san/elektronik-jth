@@ -1,0 +1,230 @@
+---
+# Clear away margin stuff
+reference-location: document
+citation-location: document
+tbl-cap-location: bottom
+cap-location: bottom
+
+format:
+    pdf:
+      papersize: a4
+      documentclass: scrartcl
+      # Change page dimensions to fit all
+      geometry: 
+        # - showframe
+        - left=1.0cm
+        - right=1.0cm
+        - top=2.0cm
+        - bottom=0.5cm
+      include-in-header:
+        - text: |
+            \setlength{\columnsep}{1mm}
+            \pagenumbering{gobble}
+---
+
+<!---
+Bygg detta dokument med
+$ quarto render bat.qmd --to pdf
+-->
+
+\Begin{multicols}{3}
+
+::: {.callout-tip title="**Lab 7 - Uppg. 5**" icon=false}
+
+**Beräkningar på strömförbrukning i ett batteri.**
+
+
+> Ett batteri har dessa märkningar:
+
+$U_{bat} = 7.2V$
+
+$E_{bat} = 13 Ah = 13\ 000 mAh$
+
+$E_{bat} = 93.6 Wh$
+
+> Detta batteripack skall mata tre delsystem:
+
+$U_{4G} = 3.8V$
+
+$I_{4G_{max}} = 1A = 1000 mA$
+
+
+$U_{WLAN} = 3.3V$
+
+$I_{WLAN_{max}} = 250mA$
+
+
+$U_{CPU} = 1.8V$
+
+$I_{CPU_{max}} = 300mA$
+
+:::
+
+
+
+:::: {.callout-note title="**c**" icon=false}
+
+> *Antagande:* LD1117 har samma $\eta$ för samma spänningsfall, oavsett $U_{ut}$.
+
+$U_{fall} = U_{bat} - U_{CPU} = 7.2 - 1.8 = 5.4V$
+
+> Eftersom $3.3V$ användes under laborationen så är vi intresserade av effektiviteten där
+
+$U_{in} = U_{ut} + U_{fall} = 3.3 + 5.4 = 8.7 \simeq 9V$
+
+> Uppmätt under laborationen vid $9V$:
+
+$\eta_{1117_{5.7}} = 0.36$
+
+$t = E_{bat}\ /\ P_{CPU_{aktiv}} \cdot \eta_{1117_{5.7}}$
+
+$t = \frac{93.6}{0.54} \cdot 0.36 = 62.4h$
+
+> Dvs. 2 dygn, 14 timmar och 24 minuter.
+
+::::
+
+
+
+\columnbreak
+
+
+::: {.callout-tip title="**Svar**" icon=false}
+
+**a**. $I_{CPU_{max}} = 1.186 mA$
+
+**b**. $t = 173.3h$ (7d, 5h, 19m)
+
+**c**. $t = 43.3h$ (1d, 19h, 20m)
+
+**d**. $t = 4134.7h$ (172d, 6h, 43m)
+
+::: 
+
+
+::: {.callout-important title="**a**" icon=false}
+
+> Kunden vill att batteriet håller i fem år:
+
+$t_{krav} = 5 \cdot 365.25 \cdot 24 h$
+
+$t_{krav} = 43830.0 h$
+
+$P_{4G} = P_{WLAN}= 0W$
+
+
+> Max-strömmen $I_{CPU}$ fås av:
+
+$P = U \cdot I \rightarrow I = P / U$
+
+> Givet en tid $t$ så kan vi räkna ut vilken effekt som ett visst batteri kan drivas med:
+
+$E = P \cdot t \rightarrow P = E / t$
+
+> Vi vet $U$, det är $U_{CPU} = 1.8V$ och att $E = E_{bat} = 93.6Wh$.
+
+$P_{CPU_{max}} = E_{bat} / t_{krav}$
+
+$P_{CPU_{max}} = 93.6 / 43830$
+
+$P_{CPU_{max}} = 2.1355 mW$
+
+$I_{CPU_{max}} = P_{CPU_{max}}\ /\ U_{CPU}$
+
+$I_{CPU_{max}} = 2.1355 mW\ /\ 1.8V$
+
+$I_{CPU_{max}} = 1.186 mA$
+
+:::
+
+
+
+
+
+::: {.callout-warning title="**b**" icon=false}
+
+$P = U \cdot I$
+
+$P_{CPU_{aktiv}} = U_{CPU} \cdot I_{CPU_{aktiv}}$
+
+$P_{CPU_{aktiv}} = 1.8V \cdot 300 mA$
+
+$P_{CPU_{aktiv}} = 540 mW$
+
+$t = E_{bat}\ /\ P_{CPU_{aktiv}}$
+
+$t = \frac{93.6}{0.54} = 173.3h$
+
+> Dvs. 7 dygn, 5 timmar och 19 minuter.
+
+:::
+
+
+
+
+
+\columnbreak
+
+::: {.callout-note title="**d -- DENNA LÖSNING ÄR FEL! UPPGIFT ÄNDRAD! GÖR OM!!**" icon=false}
+
+$I_{CPU_{vila}} = 0.1 mA$
+
+> Total förbrukning per tygn:
+
+$E_{vila} + E_{aktiv} =$
+
+$P_{vila} \cdot t_{vila} + P_{aktiv} \cdot t_{aktiv}$
+
+
+> På ett dygn är det $60 \cdot 24 = 1440$ minuter.
+
+$t_{vila} = 1435m$
+
+$t_{aktiv} = 5m$
+
+
+> Effekt när systemet är i vila:
+
+$P_{vila} = U_{CPU} \cdot I_{CPU_{vila}}$
+
+$P_{vila} = 1.8 \cdot 0.1 = 0.18 mW$
+
+
+> Och när systemet är aktivt:
+
+$P_{4G} = 3.8 \cdot 1000 = 3800 mW$
+
+$P_{WLAN} = 3.3 \cdot 250 = 825 mW$
+
+$P_{CPU_{aktiv}} = 1.8 \cdot 300 = 540 mW$
+
+$P_{aktiv} = P_{4G} + P_{WLAN} + P_{CPU_{aktiv}}$
+
+$P_{aktiv} = 5165 mW$
+
+> Detta gör att snitteffekten på ett dygn blir
+
+$P_{snitt} = \frac{P_{aktiv} \cdot t_{aktiv} + P_{vila} \cdot t_{vila}}{t_{total}}$
+
+$P_{snitt} = \frac{5165 \cdot 5 + 0.18 \cdot 1435}{1440}$
+
+$P_{snitt} = 18.11mW$
+
+<!-- 
+> Med $E_{bat} = 93.6Wh$ och $\eta = 0.8$ så får vi att
+
+$t = \frac{E_{bat}}{P_{snitt}} \cdot \eta$
+
+$t = \frac{93.6}{0.01811} \cdot 0.8 = 5168.4 \cdot 0.8$
+
+$t = 4134.7h$
+
+> Dvs. 172 dygn, 6 timmar och 43 minuter.
+
+:::
+
+
+\End{multicols}
+
+
+

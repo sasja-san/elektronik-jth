@@ -15,10 +15,11 @@ Hur påverkar valet parametrar som pris, ingångsspänning, verkningsgrad?
 ## Utrustning
 
 Komponenter du behöver låna under laborationen:
+
   * 1 st linjär spänningsregulator LD1117AV33
   * 1 st DC/DC-omvandlare NCS1S2403SC
-  * 2 st kondensatorer, 100 nF, 10 μF
-  * 1 st effektmotstånd 18 Ohm
+  * 2 st kondensatorer, 100 nF, 10 µF
+  * 1 st effektmotstånd 18 $\Omega$
 
 Du behöver kopplingsdäck och multimeter. Det underlättar om du har två multimetrar (din och labkamratens).
 
@@ -182,30 +183,41 @@ Detta batteripack skall mata en produkt som kommunicerar med en server via 4G mo
 
 4G modulen skall matas med 3.8V och kan dra upp till 1A kortvarigt, WLAN-modulen skall matas med 3.3V och kan dra upp till 250mA, och processordomänen skall matas med 1.8V och kan dra 300mA.
 
-För att gå ner från 7.2 V till en lägre spänning så används antingen ideala regulatorer ($\eta$ = 1.0), eller en icke-ideala regulatorer (linjära eller switchande).
+För att gå ner från 7.2 V till en lägre spänning så används antingen ideala regulatorer ($\eta$ = 1.0), eller en icke-ideala regulatorer (switchande/linjära med effektförluster).
 
 Besvara följande frågor:
 
 :::{.column-margin}
-Antag för ugvppgift a) och b) att alla komponenter är inkopplade med *ideala* regulatorer.
+Antag för uppgift a) och b) att alla komponenter är inkopplade med *ideala* regulatorer.
 Det är alltså inga effektförluster att räkna med.
 :::
+
 
   a) Systemet kommer större delen av sin livstid befinna sig i ett "sleep"-läge, där 4G och WLAN är helt avslagna, men processordomänen är aktiv men i ett strömreducerat tillstånd (alla moderna processorer kan detta).
     Kunden kräver att batteriet skall hålla i minst 5 år i detta strömreducerade tillstånd.
     Om du antar att produkten **alltid** är i sleep -- hur mycket ström får den då dra som mest?
 
+
   b) Om processorn är fullt "aktiv", d.v.s. ej i sleep, men 4G och WLAN är avstängda – hur länge bör batteriet hålla om du gör rätt avseende strömförsörjningsdesignen?
+
+
 
 :::{.column-margin}
 Mätningarna du gjorde var för LD1117AV33 men här ska du räkna på en LD1117AV18.
 Det är alltså en regulator som ger 1.8V och inte 3.3V. 
-Eftersom dina mätningar gjordes för en annan typ, använd då ett uppmätt $\eta$ som är för samma spänningsfall över regulatorn.
+
+Eftersom dina mätningar gjordes för en annan regulator så får en approximation göras:
+Använd det uppmätta $\eta$ som du fick för samma spänningsfall över regulatorn som uppgiften kräver.
 Detta är ett inte helt orimligt antagande.
+
+Använda detta (erat uppmätta) $\eta$ i både uppgift c) och d) för processordomänen.
+De andra spänningsdomänerna har ideala regulatorer.
 :::
+
 
   c) Om du skulle basera implementeringen på en linjär spänningsregulator i stil med LD1117AV33 – ung. hur många driftstimmar kommer man kunna förvänta sig?
     (jmf. med siffran du får från b ovan)
+
 
   d) Om du antar att processorn alltid är i sleep och då drar 0.1mA, bortsett från en gång per dygn, där processor, WLAN och 4G är aktiva i 5 minuter (och då drar angiven ström) -- hur länge kommer produkten fungera innan batteribyte?
 

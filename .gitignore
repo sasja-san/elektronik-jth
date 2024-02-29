@@ -1,5 +1,6 @@
 ## Generated PDFs (Lab* files) in the root:
 Lab*.pdf
+Bat*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
