@@ -183,7 +183,8 @@ Detta batteripack skall mata en produkt som kommunicerar med en server via 4G mo
 
 4G modulen skall matas med 3.8V och kan dra upp till 1A kortvarigt, WLAN-modulen skall matas med 3.3V och kan dra upp till 250mA, och processordomänen skall matas med 1.8V och kan dra 300mA.
 
-För att gå ner från 7.2 V till en lägre spänning så används antingen ideala regulatorer ($\eta$ = 1.0), eller en icke-ideala regulatorer (switchande/linjära med effektförluster).
+För att gå ner från 7.2 V till en lägre spänning så används antingen ideala regulatorer ($\eta$ = 1.0)[$\eta$ uttalas "eta"]{.aside}, eller en icke-ideala regulatorer (switchande/linjära med effektförluster).
+
 
 Besvara följande frågor:
 
@@ -210,8 +211,10 @@ Eftersom dina mätningar gjordes för en annan regulator så får en approximati
 Använd det uppmätta $\eta$ som du fick för samma spänningsfall över regulatorn som uppgiften kräver.
 Detta är ett inte helt orimligt antagande.
 
-Använda detta (erat uppmätta) $\eta$ i både uppgift c) och d) för processordomänen.
+Använda detta (erat uppmätta) $\eta$ i uppgift c) för processordomänen.
 De andra spänningsdomänerna har ideala regulatorer.
+
+För uppgift d) antas alla spänningar nås m.h.a. ideala regulatorer.
 :::
 
 
