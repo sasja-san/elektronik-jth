@@ -85,7 +85,7 @@ Och mät spänningen med labkamratens voltmeter (kopplad parallellt med motstån
 
 \vspace{5mm}
 
-\begin{TAB}(c,20mm,20mm)[5pt]{|r|c|c|c|c|c|c|}{|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{TAB}(c,20mm,20mm)[5pt]{|r|l|l|l|l|l|l|}{|c|c|c|c|c|c|c|c|c|c|c|}
   \normalsize{\ix{V}{in}} & \normalsize{\ix{I}{in}} & \normalsize{\ix{P}{in}} & \normalsize{\ix{V}{ut}} & \normalsize{\ix{I}{ut}} & \normalsize{\ix{P}{ut}} & \normalsize{$\eta$} \\
   \normalsize{ 3 V} & & & & & & \\
   \normalsize{ 4 V} & & & & & & \\
@@ -135,13 +135,19 @@ Vänta med att koppla ner kretsen tills motståndet kallnat!!!!!
 > 
 
 
-Koppla nu upp motsvarande krets med NCS1S2403SC.
+Koppla nu upp motsvarande krets med NCS1S2403SC, ritningen nedan hjälper.
 Till skillnad från LD1117AV33 så har denna regulator två katoder (negativa poler).
-Koppla *inte* ihop dessa.
+Dessa ska alltså *inte* kopplas ihop (se var jordsymbolen är satt).
+
+:::{.column-page}
+
+{{< include img7/sw-reg-conn.tex >}}
+
+:::
 
 Använd samma motstånd som tidigare (18$\Omega$) och fyll i tabellen nedan.
 
-\begin{TAB}(c,20mm,20mm)[5pt]{|r|c|c|c|c|c|c|}{|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{TAB}(c,20mm,20mm)[5pt]{|r|l|l|l|l|l|l|}{|c|c|c|c|c|c|c|c|c|c|c|}
   \normalsize{\ix{V}{in}} & \normalsize{\ix{I}{in}} & \normalsize{\ix{P}{in}} & \normalsize{\ix{V}{ut}} & \normalsize{\ix{I}{ut}} & \normalsize{\ix{P}{ut}} & \normalsize{$\eta$} \\
   \normalsize{ 7 V} & & & & & & \\
   \normalsize{ 8 V} & & & & & & \\
@@ -158,6 +164,8 @@ Använd samma motstånd som tidigare (18$\Omega$) och fyll i tabellen nedan.
 :::{.callout-warning title="**OBS!**"}
 Vänta med att koppla ner kretsen tills motståndet kallnat!!!!!
 :::
+
+
 
 {{< pagebreak >}}
 

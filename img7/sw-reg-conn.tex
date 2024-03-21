@@ -1,0 +1,43 @@
+
+
+
+\begin{circuitikz}[scale=1.2]
+  \draw (0,3) coordinate (aboveVS) 
+          -- ++ (0,-.5) coordinate (aboveVSdot) 
+          to [american voltage source, t=X, *-*] ++ (0,-2) coordinate (belowVSdot)
+          -- ++ (0,-0.5) coordinate (belowVS)
+          node[ground]{};
+  \draw (aboveVS)
+          to [rmeter, t=A] ++ (3,0) 
+          -- ++ (1,0) 
+          node[fourport, t=\ix{REG}{sw}, anchor=port4](Vreg){};
+  \draw (Vreg.port1) -- ++ (-2,0) |- (belowVS);
+  \draw (belowVSdot) -- ++ (-1.5,0)
+          to [rmeter, t=V] ++ (0,2)
+          -- (aboveVSdot);
+  % right hand side
+  \draw (Vreg.port3) 
+          -- ++ (1,0)
+          to [rmeter, t=A] ++ (3,0)
+          -- ++ (0,-0.5)           coordinate (aboveRLdot)
+          to [R=\ix{R}{L}, *-*] ++ (0,-2) coordinate (belowRLdot)
+          -- ++ (0,-0.5)
+          -- ++ (-2,0)
+          |- (Vreg.port2);
+  \draw (aboveRLdot)
+          -- ++ (1.5,0)
+          to [rmeter, t=V] ++ (0,-2)
+          -- ++ (-1.5,0);
+  % named pins on Vreg
+  \draw (Vreg.left up)   node[above left] {\ix{V}{in}+};
+  \draw (Vreg.left down) node[below left] {\ix{V}{in}-};
+
+  \draw (Vreg.right up)   node[above right] {\ix{V}{ut}+};
+  \draw (Vreg.right down) node[below right] {\ix{V}{ut}-};
+  % \draw (4,0) to [rmeter, t=A] ++ (0,2);
+\end{circuitikz}
+
+
+
+
+
