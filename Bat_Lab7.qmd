@@ -20,6 +20,7 @@ format:
         - text: |
             \setlength{\columnsep}{1mm}
             \pagenumbering{gobble}
+            \usepackage{amsmath}
             \usepackage{tikz}
             \usetikzlibrary{arrows,shapes}
             \usepackage{.quarto/coffeestains}
@@ -39,30 +40,23 @@ $ quarto render bat.qmd --to pdf
 
 **Beräkningar på strömförbrukning i ett batteri.**
 
-
-> Ett batteri har dessa märkningar:
-
-$U_{bat} = 7.2V$
-
-$E_{bat} = 13 Ah = 13\ 000 mAh$
-
-$E_{bat} = 93.6 Wh$
-
-> Detta batteripack skall mata tre delsystem:
-
-$U_{4G} = 3.8V$
-
-$I_{4G_{max}} = 1A = 1000 mA$
-
-
-$U_{WLAN} = 3.3V$
-
-$I_{WLAN_{max}} = 250mA$
-
-
-$U_{CPU} = 1.8V$
-
-$I_{CPU_{max}} = 300mA$
+| 
+| Ett batteri har dessa märkningar:
+| 
+| U~bat~ \tabto{10mm} = 7.2 V
+| E~bat~ \tabto{10mm} = 13 Ah $\cdot$ 7.2 V
+|        \tabto{10mm} = 93.6 Wh
+| 
+| Detta batteripack skall mata tre delsystem:
+| 
+| U~4G~   \tabto{15mm} = 3.8V
+| I~4G~   \tabto{15mm} = 1 A = 1000 mA
+| 
+| U~WLAN~ \tabto{15mm} = 3.3 V
+| I~WLAN~ \tabto{15mm} = 250 mA
+| 
+| U~CPU~  \tabto{15mm} = 1.8 V
+| I~CPU~  \tabto{15mm} = 300 mA
 
 :::
 
@@ -70,23 +64,26 @@ $I_{CPU_{max}} = 300mA$
 
 :::: {.callout-note title="**c**" icon=false}
 
-> *Antagande:* LD1117 har samma $\eta$ för samma spänningsfall, oavsett $U_{ut}$.
-
-$U_{fall} = U_{bat} - U_{CPU} = 7.2 - 1.8 = 5.4V$
-
-> Eftersom $3.3V$ användes under laborationen så är vi intresserade av effektiviteten där
-
-$U_{in} = U_{ut} + U_{fall} = 3.3 + 5.4 = 8.7 \simeq 9V$
-
-> Uppmätt under laborationen vid $9V$:
-
-$\eta_{1117_{5.7}} = 0.36$
-
-$t = E_{bat}\ /\ P_{CPU_{aktiv}} \cdot \eta_{1117_{5.7}}$
-
-$t = \frac{93.6}{0.54} \cdot 0.36 = 62.4h$
-
-> Dvs. 2 dygn, 14 timmar och 24 minuter.
+| [***Antagande***]{.underline}: En LD1117 har samma $\eta$ för samma spänningsfall, oavsett vilket U~ut~ som komponenten är specificerad för. 
+|
+| U~fall~ \tabto{10mm} = U~bat~ - U~CPU~
+|         \tabto{10mm} = 7.2 - 1.8
+|         \tabto{10mm} = 5.4 V
+| 
+| Eftersom 3.3V användes under laborationen så är vi intresserade av effektiviteten där.
+| 
+| U~in~ \tabto{10mm} = U~ut~ + U~fall~
+|       \tabto{10mm} = 3.3 + 5.4
+|       \tabto{10mm} = 8.7 $\simeq$ 9 V
+| 
+| Uppmätt under laborationen vid 9V:
+| 
+| $\eta_{\text{1117}_{\text{5.7}}}$ \tabto{12mm} = 0.36
+| t \tabto{12mm} = E~bat~ / \ixx{P}{CPU}{aktiv} $\cdot$ $\eta_{\textnormal{1117}_{\textnormal{5.7}}}$
+|   \tabto{12mm} = 93.6 / 0.54 $\cdot$ 0.36
+|   \tabto{12mm} = 62.4 h
+| 
+| Dvs. 2d, 14h, och 24m.
 
 ::::
 
@@ -97,49 +94,44 @@ $t = \frac{93.6}{0.54} \cdot 0.36 = 62.4h$
 
 ::: {.callout-tip title="**Svar**" icon=false}
 
-**a**. $I_{CPU_{max}} = 1.186 mA$
+**a**. \ixx{I}{CPU}{max} = 1.186 mA
 
-**b**. $t = 173.3h$ (7d, 5h, 19m)
+**b**. t = 173.3 h (7d, 5h, 19m)
 
-**c**. $t = 43.3h$ (1d, 19h, 20m)
+**c**. t = 43.3 h (1d, 19h, 20m)
 
-**d**. $t = 4134.7h$ (172d, 6h, 43m)
+**d**. t = 4134.7h (172d, 6h, 43m)
 
 ::: 
 
 
 ::: {.callout-important title="**a**" icon=false}
 
-> Kunden vill att batteriet håller i fem år:
-
-$t_{krav} = 5 \cdot 365.25 \cdot 24 h$
-
-$t_{krav} = 43830.0 h$
-
-$P_{4G} = P_{WLAN}= 0W$
-
-
-> Max-strömmen $I_{CPU}$ fås av:
-
-$P = U \cdot I \rightarrow I = P / U$
-
-> Givet en tid $t$ så kan vi räkna ut vilken effekt som ett visst batteri kan drivas med:
-
-$E = P \cdot t \rightarrow P = E / t$
-
-> Vi vet $U$, det är $U_{CPU} = 1.8V$ och att $E = E_{bat} = 93.6Wh$.
-
-$P_{CPU_{max}} = E_{bat} / t_{krav}$
-
-$P_{CPU_{max}} = 93.6 / 43830$
-
-$P_{CPU_{max}} = 2.1355 mW$
-
-$I_{CPU_{max}} = P_{CPU_{max}}\ /\ U_{CPU}$
-
-$I_{CPU_{max}} = 2.1355 mW\ /\ 1.8V$
-
-$I_{CPU_{max}} = 1.186 mA$
+| Kunden vill att batteriet håller i fem år:
+|
+| t~krav~ \tabto{10mm} = 5 $\cdot$ 365.25 $\cdot$ 24 h
+|         \tabto{10mm} = 43830.0 h
+|
+| P~4G~   \tabto{10mm} = P~WLAN~ = 0 W
+|
+| Max-strömmen I~CPU~ fås av:
+|
+| P = U $\cdot$ I $\rightarrow$ I = P / U
+| 
+| Givet en tid t så kan vi räkna ut vilken effekt som ett visst batteri kan drivas med:
+|
+| E = P $\cdot$ t $\rightarrow$ P = E / t
+|
+|
+| Vi vet U, det är U~CPU~ = 1.8 V och att E = E~bat~ = 93.6 Wh.
+|
+| \ixx{P}{CPU}{max} \tabto{15mm} = E~bat~ / t~krav~
+|                   \tabto{15mm} = 93.6 / 43830
+|                   \tabto{15mm} = 2.1355 mW
+|
+| \ixx{I}{CPU}{max} \tabto{15mm} = \ixx{P}{CPU}{max} / U~CPU~
+|                   \tabto{15mm} = 2.1355 mW / 1.8 V
+|                   \tabto{15mm} = 1.186 mA
 
 :::
 
