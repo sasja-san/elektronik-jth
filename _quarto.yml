@@ -44,11 +44,18 @@ format:
       number-sections: false
       colorlinks: false
 
-      mainfont: ETbb
+      mainfont: "ETbb"
+      mainfontoptions:
+        - Path=fonts/
+        - Extension=.otf
+        - UprightFont=*-Regular
+        - BoldFont=*-Bold
+        - ItalicFont=*-Italic
+        - BoldItalicFont=*-BoldItalic
 
       monofont: "SourceCodePro"
       monofontoptions:
-        - Path=.ttf/
+        - Path=fonts/
         - Extension=.ttf
         - UprightFont=*-Medium
         - BoldFont=*-Bold
@@ -57,7 +64,7 @@ format:
 
       sansfont: "cabin"
       sansfontoptions:
-        - Path=.ttf/
+        - Path=fonts/
         - Extension=.ttf
         - UprightFont=*.medium
         - BoldFont=*.bold
